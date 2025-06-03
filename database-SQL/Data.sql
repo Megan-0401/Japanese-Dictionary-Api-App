@@ -13,10 +13,13 @@ VALUES ('animals'), ('buildings'), ('countries & languages'), ('clothes & fashio
 ('shopping'), ('size'), ('sports'), ('traits'), ('transport'), ('weather'), ('work'), ('unclassified');
 
 INSERT INTO kanji (kanji)
-VALUES ('学生'), ('医者'), ('車'), ('高い'), ('鉛筆'), ('安い'), ('寿司'), ('今日');
+VALUES ('N/A'), ('学生'), ('医者'), ('車'), ('高い'), ('鉛筆'), ('安い'), ('寿司'), ('今日');
 
 INSERT INTO hiragana (hiragana)
-VALUES ('がくせい'), ('あなた'), ('いしゃ'), ('くるま'), ('たかい'), ('えんぴつ'), ('やすい'), ('すし'), ('おいしい'), ('きょう');
+VALUES ('N/A'), ('がくせい'), ('あなた'), ('いしゃ'), ('くるま'), ('たかい'), ('えんぴつ'), ('やすい'), ('すし'), ('おいしい'), ('きょう');
+
+INSERT INTO katakana (katakana)
+VALUES ('N/A');
 
 INSERT INTO romanji (romanji)
 VALUES ('gakusei'), ('anata'), ('isha'), ('kuruma'), ('takai'), ('enpitsu'), ('yasui'), ('sushi'), ('oishii'), ('kyou');
@@ -30,11 +33,8 @@ Values ('あなたは学生ですか？', 'Are you a student?'), ('僕の母は�
 ('この店でりんごが安いですね。', "The apples at this store are cheap, aren't they?"), ('おいしい寿司が好きです。', 'I like delicious sushi.'),
 ('今日は私の誕生日です。', 'Today is my birthday.');
 
-INSERT INTO words (kanji_id, hiragana_id, romanji_id, class_id, sentence_id)
-VALUES (1, 1, 1, 2, 1),(2, 3, 3, 2, 2);
-
-INSERT INTO words (hiragana_id, romanji_id, class_id, sentence_id)
-VALUES (2, 2, 1, 1);
+INSERT INTO words (kanji_id, hiragana_id, katakana_id, romanji_id, class_id, sentence_id)
+VALUES (2, 2, 1, 1, 2, 1),(1, 3, 1, 2, 1, 1),(3, 4, 1, 3, 2, 2);
 
 INSERT INTO word_meanings
 VALUES (1, 1), (2, 2), (3, 3);
