@@ -8,8 +8,14 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String username;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

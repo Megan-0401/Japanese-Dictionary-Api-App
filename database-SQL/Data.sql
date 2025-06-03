@@ -1,7 +1,7 @@
 USE dictionary;
 
 -- adding word classes
-INSERT INTO word_classes (class)
+INSERT INTO word_classes (word_class)
 VALUES ('pronoun'), ('noun'), ('-i adjective'), ('-na adjective'), ('verb'), ('determiner'), ('preposition');
 
 -- adding word categories

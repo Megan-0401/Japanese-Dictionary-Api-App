@@ -4,7 +4,7 @@ USE dictionary;
 
 CREATE TABLE word_classes (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-class VARCHAR (50) NOT NULL,
+word_class VARCHAR (50) NOT NULL,
 PRIMARY KEY (id));
 
 CREATE TABLE sentences (

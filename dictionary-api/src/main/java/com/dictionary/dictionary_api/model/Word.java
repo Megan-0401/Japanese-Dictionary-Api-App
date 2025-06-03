@@ -11,13 +11,9 @@ public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(columnDefinition = "VARCHAR(20)")
     private String kanji;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String hiragana;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String katakana;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String romanji;
 
     @ManyToOne(cascade=CascadeType.ALL)
@@ -70,5 +66,13 @@ public class Word {
 
     public Sentence getSentence() {
         return sentence;
+    }
+
+    public List<Meaning> getMeanings() {
+        return meanings;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 }

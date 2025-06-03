@@ -1,6 +1,9 @@
 package com.dictionary.dictionary_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "word_classes")
@@ -8,6 +11,9 @@ public class WordClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(columnDefinition = "VARCHAR(50)")
     private String word_class;
+
+    @OneToMany(mappedBy = "word_class")
+    @JsonIgnore
+    private List<Word> words;
 }
