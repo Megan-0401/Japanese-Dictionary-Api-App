@@ -2,26 +2,6 @@ CREATE DATABASE dictionary;
 
 USE dictionary;
 
-CREATE TABLE kanji (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-kanji VARCHAR (20) NOT NULL,
-PRIMARY KEY (id));
-
-CREATE TABLE hiragana (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-hiragana VARCHAR (50) NOT NULL,
-PRIMARY KEY (id));
-
-CREATE TABLE katakana (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-katakana VARCHAR (50) NOT NULL,
-PRIMARY KEY (id));
-
-CREATE TABLE romanji (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-romanji VARCHAR (50) NOT NULL,
-PRIMARY KEY (id));
-
 CREATE TABLE word_classes (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 class VARCHAR (50) NOT NULL,
@@ -35,17 +15,13 @@ PRIMARY KEY (id));
 
 CREATE TABLE words (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-kanji_id INT UNSIGNED,
-hiragana_id INT UNSIGNED,
-katakana_id INT UNSIGNED,
-romanji_id INT UNSIGNED NOT NULL,
+kanji VARCHAR (20),
+hiragana VARCHAR (50),
+katakana VARCHAR (50),
+romanji VARCHAR (50) NOT NULL,
 class_id INT UNSIGNED NOT NULL,
 sentence_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (kanji_id) REFERENCES kanji(id),
-FOREIGN KEY (hiragana_id) REFERENCES hiragana(id),
-FOREIGN KEY (katakana_id) REFERENCES katakana(id),
-FOREIGN KEY (romanji_id) REFERENCES romanji(id),
 FOREIGN KEY (class_id) REFERENCES word_classes(id),
 FOREIGN KEY (sentence_id) REFERENCES sentences(id)
 );
