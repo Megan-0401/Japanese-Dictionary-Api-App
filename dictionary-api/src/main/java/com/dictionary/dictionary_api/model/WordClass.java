@@ -16,4 +16,12 @@ public class WordClass {
     @OneToMany(mappedBy = "word_class")
     @JsonIgnore
     private List<Word> words;
+
+    public String getWord_class() {
+        return word_class;
+    }
+
+    public List<Word> getWords() {
+        return words;
+    }
 }

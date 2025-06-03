@@ -18,4 +18,15 @@ public class Sentence {
     @JsonIgnore
     private List<Word> words;
 
+    public String getJp_sentence() {
+        return jp_sentence;
+    }
+
+    public String getEng_sentence() {
+        return eng_sentence;
+    }
+
+    public List<Word> getWords() {
+        return words;
+    }
 }

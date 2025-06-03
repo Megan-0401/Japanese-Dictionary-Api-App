@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "words")
+@Entity(name = "words")
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +15,15 @@ public class Word {
     private String katakana;
     private String romanji;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "class_id")
+    @ManyToOne
+    @JoinColumn(name="class_id")
     private WordClass word_class;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "sentence_id")
+    @ManyToOne
+    @JoinColumn(name="sentence_id")
     private Sentence sentence;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "word_meanings",
             joinColumns = @JoinColumn(name = "word_id"),
@@ -32,7 +31,7 @@ public class Word {
     )
     List<Meaning> meanings = new ArrayList<>();
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "word_categories",
             joinColumns = @JoinColumn(name = "word_id"),

@@ -2,6 +2,7 @@ package com.dictionary.dictionary_api.controller;
 
 import com.dictionary.dictionary_api.model.Word;
 import com.dictionary.dictionary_api.service.WordService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class WordController {
 
     //METHODS//
 
-    @RequestMapping
+    @GetMapping
     public List<Word> getAllWords() {
         return wordService.getAllWords();
     }
