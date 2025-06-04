@@ -31,3 +31,30 @@ a {
 	display: flex;
 	gap: 30px;
 }
+
+//LOOK UP//
+#lookUp {
+	margin-top: 125px;
+	margin-left: 55px;
+}
+//SEARCH BAR//
+#search {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.search-container {
+	display: flex;
+	&__bar {
+		font-size: typography.$lg-seach-text-size;
+		border: none;
+		border-radius: 5px;
+		height: 50px;
+		width: 350px;
+		padding-left: 15px;
+	}
+}
+#resultInfo {
+	font-size: typography.$lg-search-count-size;
+	padding-left: 10px;
+}

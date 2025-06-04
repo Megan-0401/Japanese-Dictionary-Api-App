@@ -1,10 +1,17 @@
 @use "./palette";
 @use "./typography";
 
+//MIXINS//
+@mixin hover {
+	cursor: pointer;
+}
+
 .btn {
 	border: none;
-	border-radius: 10%;
+	border-radius: 5px;
 	padding: 10px;
+
+	//NAVIGATION//
 	&--nav {
 		background-color: palette.$nav-btn;
 		height: 50px;
@@ -12,5 +19,16 @@
 	}
 	&--nav:hover {
 		background-color: palette.$nav-btn-hover;
+		@include hover;
+	}
+
+	//SEARCH BAR//
+	&--search {
+		width: 60px;
+		background-color: palette.$search-btn;
+	}
+	&--search:hover {
+		background-color: palette.$search-btn-hover;
+		@include hover;
 	}
 }

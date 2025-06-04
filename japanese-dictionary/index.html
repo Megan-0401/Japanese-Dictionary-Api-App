@@ -5,6 +5,7 @@
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>JP Dictionary</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	</head>
 	<body>
 		<script type="module" src="/src/main.ts"></script>
@@ -24,6 +25,23 @@
 				</ul>
 			</nav>
 		</head>
-		<main></main>
+		<main>
+			<section id="lookUp">
+				<section id="search">
+					<div class="search-container">
+						<input
+							class="search-container__bar"
+							type="text"
+							placeholder="Search by word..."
+						/>
+						<button class="btn btn--search">
+							<i class="material-icons">search</i>
+						</button>
+					</div>
+					<div id="resultInfo">results: 0</div>
+				</section>
+				<section id="filter"></section>
+			</section>
+		</main>
 	</body>
 </html>
