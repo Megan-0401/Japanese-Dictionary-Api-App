@@ -1,0 +1,44 @@
+.btn {
+  border: none;
+  border-radius: 15%;
+  padding: 5px;
+}
+.btn--nav {
+  background-color: #519d99;
+  height: 30px;
+}
+.btn--nav:hover {
+  background-color: #438581;
+}
+
+body {
+  background-color: #b5e4e2;
+}
+
+nav {
+  background-color: #519d99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-title {
+  margin-left: 35px;
+}
+
+.nav-links {
+  margin-right: 35px;
+  display: flex;
+  gap: 25px;
+}
+
+/*# sourceMappingURL=style.css.map */

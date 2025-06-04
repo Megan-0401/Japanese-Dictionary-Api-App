@@ -1,0 +1,14 @@
+@use "./palette";
+
+.btn {
+	border: none;
+	border-radius: 15%;
+	padding: 5px;
+	&--nav {
+		background-color: palette.$nav-btn;
+		height: 30px;
+	}
+	&--nav:hover {
+		background-color: palette.$nav-btn-hover;
+	}
+}

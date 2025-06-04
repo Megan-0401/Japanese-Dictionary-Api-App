@@ -1,0 +1,31 @@
+@use "./styleSheets/palette";
+@use "./styleSheets/buttons";
+
+//BODY//
+body {
+	background-color: palette.$page-body;
+}
+
+//NAVIGATION BAR//
+nav {
+	background-color: palette.$nav-bar;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 75px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+a {
+	text-decoration: none;
+}
+.site-title {
+	margin-left: 35px;
+}
+.nav-links {
+	margin-right: 35px;
+	display: flex;
+	gap: 25px;
+}
