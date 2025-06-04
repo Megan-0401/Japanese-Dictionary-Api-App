@@ -15,4 +15,11 @@ public class Bookmark {
     @JoinColumn(name="user_id")
     User user;
 
+    public Word getWord() {
+        return word;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }
