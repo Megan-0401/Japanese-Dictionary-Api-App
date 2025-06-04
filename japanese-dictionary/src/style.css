@@ -55,6 +55,8 @@ a {
 #lookUp {
   margin-top: 125px;
   margin-left: 55px;
+  display: flex;
+  justify-content: space-around;
 }
 
 #search {
@@ -78,6 +80,27 @@ a {
 #resultInfo {
   font-size: 18px;
   padding-left: 10px;
+}
+
+#filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dropdown-container {
+  display: flex;
+  gap: 10px;
+}
+.dropdown-container__dropdown {
+  border: none;
+  background-color: white;
 }
 
 /*# sourceMappingURL=style.css.map */

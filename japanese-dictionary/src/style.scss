@@ -36,6 +36,8 @@ a {
 #lookUp {
 	margin-top: 125px;
 	margin-left: 55px;
+	display: flex;
+	justify-content: space-around;
 }
 //SEARCH BAR//
 #search {
@@ -57,4 +59,23 @@ a {
 #resultInfo {
 	font-size: typography.$lg-search-count-size;
 	padding-left: 10px;
+}
+//FILTER//
+#filter {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.filter-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+.dropdown-container {
+	display: flex;
+	gap: 10px;
+	&__dropdown {
+		border: none;
+		background-color: white;
+	}
 }
