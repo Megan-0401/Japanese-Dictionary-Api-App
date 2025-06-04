@@ -1,11 +1,12 @@
 .btn {
   border: none;
-  border-radius: 15%;
-  padding: 5px;
+  border-radius: 10%;
+  padding: 10px;
 }
 .btn--nav {
   background-color: #519d99;
-  height: 30px;
+  height: 50px;
+  font-size: 19.5px;
 }
 .btn--nav:hover {
   background-color: #438581;
@@ -33,12 +34,13 @@ a {
 
 .site-title {
   margin-left: 35px;
+  font-size: 25px;
 }
 
 .nav-links {
   margin-right: 35px;
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */
