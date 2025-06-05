@@ -6,9 +6,9 @@ VALUES ('pronoun'), ('noun'), ('-i adjective'), ('-na adjective'), ('verb'), ('d
 
 -- adding word categories
 INSERT INTO categories (category)
-VALUES ('animals'), ('buildings'), ('countries & languages'), ('clothes & fashion'), ('creativity'), ('date & time'), ('directions'), 
-('emotions'), ('family'), ('food'), ('literature'), ('negative'), ('occupations'), ('people'), ('positive'), ('relationships'), ('school'),
-('shopping'), ('size'), ('sports'), ('traits'), ('transport'), ('weather'), ('work'), ('unclassified');
+VALUES ('animals'), ('architecture'), ('countries & languages'), ('clothes & fashion'), ('creativity'), ('date & time'), ('directions'), 
+('emotions'), ('family'), ('food & drink'), ('literature'), ('negative'), ('occupations'), ('people'), ('positive'), ('question'), ('relationships'),
+('school'), ('shopping'), ('size'), ('sports'), ('traits'), ('transport'), ('weather & seasons'), ('work'), ('unclassified');
 
 -- adding sentences
 INSERT INTO sentences (jp_sentence, eng_sentence)
@@ -29,3 +29,6 @@ VALUES ('student'), ('you'), ('doctor'), ('car'), ('tall'), ('expensive'), ('pen
 
 INSERT INTO word_meanings
 VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (5,6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11);
+
+INSERT INTO word_categories
+VALUES (1, 18), (2, 14), (3, 13), (4, 23), (5, 20), (5, 19), (6, 5), (7, 19), (8, 10), (9, 10), (9, 15), (10, 6);
