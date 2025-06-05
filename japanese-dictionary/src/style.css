@@ -1,17 +1,13 @@
-.dark-col {
-  color: #071212;
-}
-
 .dark-teal-col {
   color: #3b8883;
 }
 
-.dark-faded-teal-col {
-  color: #607b7a;
-}
-
 .light-faded-orange-col {
   color: #ba935a;
+}
+
+.dark-col {
+  color: #071212;
 }
 
 .btn {
@@ -50,8 +46,9 @@ body {
 .title--primary {
   font-size: 30px;
 }
-.title--margin {
+.title--logo {
   margin-left: 35px;
+  color: #071212;
 }
 .title--secondary {
   font-size: 25px;
@@ -115,6 +112,7 @@ a {
 #resultInfo {
   font-size: 20px;
   padding-left: 10px;
+  color: #607b7a;
 }
 
 #filter {
@@ -162,6 +160,7 @@ a {
   font-size: 30px;
   margin-top: 0px;
   margin-bottom: 5px;
+  color: #3b8883;
 }
 .word-container__roma-meaning {
   display: flex;
@@ -184,6 +183,7 @@ a {
 }
 .word-info-container__text {
   font-size: 13.5px;
+  color: #607b7a;
 }
 
 .hiragana {
@@ -195,12 +195,19 @@ a {
 .romanji--small {
   font-size: 16px;
   margin-top: 0px;
+  color: #607b7a;
 }
 
 .sentence {
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.sentence--jp {
+  color: #071212;
+}
+.sentence--eng {
+  color: #607b7a;
 }
 
 /*# sourceMappingURL=style.css.map */

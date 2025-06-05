@@ -17,16 +17,15 @@ $dark-faded-teal-text: #607b7a;
 $orange-text: #d89534;
 $light-faded-orange-text: #ba935a;
 
-//CLASSES FOR REPEATING OR SPAN COLOURS//
-.dark-col {
-	color: $dark-text;
-}
+//HIGHLIGHTING JP WORD IN SENTENCE//
 .dark-teal-col {
 	color: $dark-teal-text;
 }
-.dark-faded-teal-col {
-	color: $dark-faded-teal-text;
-}
+//HIGHLIGHTING ENG WORD IN SENTENCE//
 .light-faded-orange-col {
 	color: $light-faded-orange-text;
+}
+//HIGHLIGHTING WORD INFO//
+.dark-col {
+	color: $dark-text;
 }

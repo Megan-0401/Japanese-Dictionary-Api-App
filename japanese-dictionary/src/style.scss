@@ -12,8 +12,9 @@ body {
 	&--primary {
 		font-size: typography.$lg-primary-header-size;
 	}
-	&--margin {
+	&--logo {
 		margin-left: 35px;
+		color: palette.$dark-text;
 	}
 	&--secondary {
 		font-size: typography.$lg-secondary-header-size;
@@ -75,6 +76,7 @@ a {
 #resultInfo {
 	font-size: typography.$lg-search-count-size;
 	padding-left: 10px;
+	color: palette.$dark-faded-teal-text;
 }
 //FILTER//
 #filter {
@@ -120,6 +122,7 @@ a {
 		font-size: typography.$lg-primary-word-size;
 		margin-top: 0px;
 		margin-bottom: 5px;
+		color: palette.$dark-teal-text;
 	}
 	&__roma-meaning {
 		display: flex;
@@ -140,6 +143,7 @@ a {
 	gap: 100px;
 	&__text {
 		font-size: typography.$lg-subtitle-size;
+		color: palette.$dark-faded-teal-text;
 	}
 }
 //SECTIONS//
@@ -152,10 +156,17 @@ a {
 	&--small {
 		font-size: typography.$lg-small-roma-size;
 		margin-top: 0px;
+		color: palette.$dark-faded-teal-text;
 	}
 }
 .sentence {
 	font-size: typography.$lg-sentence-size;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	&--jp {
+		color: palette.$dark-text;
+	}
+	&--eng {
+		color: palette.$dark-faded-teal-text;
+	}
 }
