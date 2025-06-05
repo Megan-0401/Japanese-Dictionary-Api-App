@@ -2,7 +2,7 @@ import type { WordResponse, Word } from "../wordObject";
 
 //GET ALL WORDS//
 export const getAllWords = async () => {
-	const response = await fetch("");
+	const response = await fetch("https://localhost:8080/api/words");
 	const data: WordResponse[] = await response.json();
 	return reformatData(data).then((value) => value);
 };

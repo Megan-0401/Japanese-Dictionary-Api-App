@@ -1,6 +1,7 @@
 import "./style.scss";
 import type { Word } from "./wordObject";
 import { getAllWords } from "./utilities/fetchAPI";
+import { createHTMLString } from "./utilities/htmlFormatter";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -48,3 +49,11 @@ const fetchAllWords = (): Word[] => {
 const displayResult = (htmlString: string) => {
 	resultContainer.innerHTML = htmlString;
 };
+
+const displayAllWords = () => {
+	const words: Word[] = fetchAllWords();
+	const htmlString = createHTMLString(words);
+	displayResult(htmlString);
+};
+
+displayAllWords();

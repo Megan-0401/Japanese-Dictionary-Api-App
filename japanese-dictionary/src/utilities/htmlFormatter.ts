@@ -55,9 +55,15 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 				</section>`;
 };
 
-const concatAllHtmlStrings = (htmlStrings: string[]): string => {
+export const createHTMLString = (words: Word[]): string => {
 	let concattedString = "";
-	for (const string of htmlStrings) {
+	for (const word of words) {
+		let string = "";
+		if (word.kanji === "N/A") {
+			string = getNonKanjiResultContainerHTML(word);
+		} else {
+			string = getKanjiResultContainerHTML(word);
+		}
 		concattedString += string;
 	}
 	return concattedString;
