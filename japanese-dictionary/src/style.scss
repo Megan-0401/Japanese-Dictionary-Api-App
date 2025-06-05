@@ -133,6 +133,19 @@ a {
 		color: palette.$orange-text;
 	}
 }
+.bookmark {
+	width: 40px;
+	height: 40px;
+	background-color: palette.$bookmark;
+	border-radius: 5px;
+	position: relative;
+	right: 185px;
+	bottom: 20px;
+	&--icon {
+		color: white;
+		padding: 5px;
+	}
+}
 .stacked-container {
 	display: flex;
 	flex-direction: column;
@@ -153,10 +166,13 @@ a {
 	color: palette.$dark-text;
 }
 .romanji {
+	color: palette.$dark-faded-teal-text;
 	&--small {
 		font-size: typography.$lg-small-roma-size;
 		margin-top: 0px;
-		color: palette.$dark-faded-teal-text;
+	}
+	&--big {
+		font-size: typography.$lg-secondary-word-size;
 	}
 }
 .sentence {
