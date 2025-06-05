@@ -1,6 +1,6 @@
-import type { Word, KanjiWord } from "../wordObject";
+import type { Word } from "../wordObject";
 
-const getKanjiResultContainerHTML = (word: KanjiWord): string => {
+const getKanjiResultContainerHTML = (word: Word): string => {
 	return `<section class="result-container">
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
@@ -15,7 +15,7 @@ const getKanjiResultContainerHTML = (word: KanjiWord): string => {
 								<p class="hiragana">${word.hiragana}</p>
 								<p class="romanji romanji--small">${word.romanji}</p>
 							</div>
-							<p class="word-container__meaning">${word.meanings.join(",")}</p>
+							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
 							<p class="sentence sentence--jp">${word.sentences.jpSentence}</p>
@@ -23,7 +23,7 @@ const getKanjiResultContainerHTML = (word: KanjiWord): string => {
 						</div>
 						<div class="word-info-container">
 							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
-							<p class="word-info-container__text">Category: ${word.categories.join(",")}</p>
+							<p class="word-info-container__text">Category: ${word.categories}</p>
 						</div>
 					</div>
 				</section>`;
@@ -41,7 +41,7 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 						<p class="word-container__main-word">${word.hiragana}</p>
 						<div class="word-container__roma-meaning">
 							<p class="romanji romanji--big">${word.romanji}</p>
-							<p class="word-container__meaning">${word.meanings.join(",")}</p>
+							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
 							<p class="sentence sentence--jp">${word.sentences.jpSentence}</p>
@@ -49,7 +49,7 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 						</div>
 						<div class="word-info-container">
 							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
-							<p class="word-info-container__text">Category: ${word.categories.join(",")}</p>
+							<p class="word-info-container__text">Category: ${word.categories}</p>
 						</div>
 					</div>
 				</section>`;

@@ -1,5 +1,6 @@
 import "./style.scss";
-//import type { Word, KanjiWord } from "./wordObject";
+import type { Word } from "./wordObject";
+import { getAllWords } from "./utilities/fetchAPI";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -39,6 +40,10 @@ if (
 }
 
 //METHODS//
+
+const fetchAllWords = (): Word[] => {
+	return getAllWords() as unknown as Word[];
+};
 
 const displayResult = (htmlString: string) => {
 	resultContainer.innerHTML = htmlString;
