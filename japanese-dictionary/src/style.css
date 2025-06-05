@@ -1,3 +1,19 @@
+.dark-col {
+  color: #071212;
+}
+
+.dark-teal-col {
+  color: #3b8883;
+}
+
+.dark-faded-teal-col {
+  color: #607b7a;
+}
+
+.light-faded-orange-col {
+  color: #ba935a;
+}
+
 .btn {
   border: none;
   border-radius: 5px;
@@ -7,6 +23,7 @@
   background-color: #519d99;
   height: 50px;
   font-size: 19.5px;
+  color: #071212;
 }
 .btn--nav:hover {
   background-color: #438581;
@@ -38,6 +55,9 @@ body {
 }
 .title--secondary {
   font-size: 25px;
+}
+.title--teal {
+  color: #519d99;
 }
 
 nav {
@@ -88,6 +108,10 @@ a {
   padding-left: 15px;
 }
 
+.material-icons {
+  font-size: 30px;
+}
+
 #resultInfo {
   font-size: 20px;
   padding-left: 10px;
@@ -126,7 +150,7 @@ a {
 }
 
 .word-container {
-  background: url("../public/assets/paper-5615944.png");
+  background: url("../assets/paper-5615944.png");
   width: 560px;
   height: 450px;
   display: flex;
@@ -145,6 +169,7 @@ a {
 }
 .word-container__meaning {
   font-size: 24px;
+  color: #d89534;
 }
 
 .stacked-container {
@@ -164,6 +189,7 @@ a {
 .hiragana {
   font-size: 24px;
   margin-bottom: 15px;
+  color: #071212;
 }
 
 .romanji--small {

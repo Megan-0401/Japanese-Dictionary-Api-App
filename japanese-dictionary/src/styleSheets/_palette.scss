@@ -8,3 +8,25 @@ $nav-btn: #519d99;
 $nav-btn-hover: #438581;
 $search-btn: #6fa3a0;
 $search-btn-hover: #659693;
+
+//TEXT//
+$dark-text: #071212;
+$dark-teal-text: #3b8883;
+$teal-text: #519d99;
+$dark-faded-teal-text: #607b7a;
+$orange-text: #d89534;
+$light-faded-orange-text: #ba935a;
+
+//CLASSES FOR REPEATING OR SPAN COLOURS//
+.dark-col {
+	color: $dark-text;
+}
+.dark-teal-col {
+	color: $dark-teal-text;
+}
+.dark-faded-teal-col {
+	color: $dark-faded-teal-text;
+}
+.light-faded-orange-col {
+	color: $light-faded-orange-text;
+}

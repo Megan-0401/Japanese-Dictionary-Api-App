@@ -18,6 +18,9 @@ body {
 	&--secondary {
 		font-size: typography.$lg-secondary-header-size;
 	}
+	&--teal {
+		color: palette.$teal-text;
+	}
 }
 
 //NAVIGATION BAR//
@@ -66,6 +69,9 @@ a {
 		padding-left: 15px;
 	}
 }
+.material-icons {
+	font-size: 30px;
+}
 #resultInfo {
 	font-size: typography.$lg-search-count-size;
 	padding-left: 10px;
@@ -103,7 +109,7 @@ a {
 }
 //WORD CONTAINERS//
 .word-container {
-	background: url("../public/assets/paper-5615944.png");
+	background: url("../assets/paper-5615944.png");
 	width: 560px;
 	height: 450px;
 	display: flex;
@@ -121,6 +127,7 @@ a {
 	}
 	&__meaning {
 		font-size: typography.$lg-secondary-word-size;
+		color: palette.$orange-text;
 	}
 }
 .stacked-container {
@@ -139,6 +146,7 @@ a {
 .hiragana {
 	font-size: typography.$lg-secondary-word-size;
 	margin-bottom: 15px;
+	color: palette.$dark-text;
 }
 .romanji {
 	&--small {

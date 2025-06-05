@@ -16,6 +16,7 @@
 		background-color: palette.$nav-btn;
 		height: 50px;
 		font-size: typography.$lg-btn-size;
+		color: palette.$dark-text;
 	}
 	&--nav:hover {
 		background-color: palette.$nav-btn-hover;
