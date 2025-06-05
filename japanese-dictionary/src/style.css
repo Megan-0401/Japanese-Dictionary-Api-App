@@ -10,6 +10,14 @@
   color: #071212;
 }
 
+p,
+div,
+button,
+input,
+select {
+  font-family: "Afacad";
+}
+
 .btn {
   border: none;
   border-radius: 5px;
@@ -18,7 +26,7 @@
 .btn--nav {
   background-color: #519d99;
   height: 50px;
-  font-size: 19.5px;
+  font-size: 24px;
   color: #071212;
 }
 .btn--nav:hover {
@@ -34,7 +42,7 @@
   cursor: pointer;
 }
 .btn--clear {
-  font-size: 19.5px;
+  font-size: 24px;
   background-color: #6fa3a0;
   width: 80px;
 }
@@ -152,6 +160,7 @@ a {
 }
 .dropdown-container__dropdown {
   border: none;
+  border-radius: 5px;
   background-color: white;
   width: 250px;
 }
@@ -171,7 +180,7 @@ a {
 
 .word-container {
   position: relative;
-  top: 35px;
+  top: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,7 +229,7 @@ a {
   gap: 100px;
 }
 .word-info-container__text {
-  font-size: 13.5px;
+  font-size: 14px;
   color: #607b7a;
 }
 

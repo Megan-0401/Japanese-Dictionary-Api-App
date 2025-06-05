@@ -97,6 +97,7 @@ a {
 	}
 	&__dropdown {
 		border: none;
+		border-radius: 5px;
 		background-color: white;
 		width: 250px;
 	}
@@ -117,7 +118,7 @@ a {
 //WORD CONTAINERS//
 .word-container {
 	position: relative;
-	top: 35px;
+	top: 28px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
