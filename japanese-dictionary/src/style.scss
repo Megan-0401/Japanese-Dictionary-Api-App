@@ -7,6 +7,19 @@ body {
 	background-color: palette.$page-body;
 }
 
+//TITLES//
+.title {
+	&--primary {
+		font-size: typography.$lg-primary-header-size;
+	}
+	&--margin {
+		margin-left: 35px;
+	}
+	&--secondary {
+		font-size: typography.$lg-secondary-header-size;
+	}
+}
+
 //NAVIGATION BAR//
 nav {
 	background-color: palette.$nav-bar;
@@ -22,10 +35,6 @@ nav {
 a {
 	text-decoration: none;
 }
-.site-title {
-	margin-left: 35px;
-	font-size: typography.$lg-header-size;
-}
 .nav-links {
 	margin-right: 35px;
 	display: flex;
@@ -37,13 +46,14 @@ a {
 	margin-top: 125px;
 	margin-left: 55px;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
 //SEARCH BAR//
 #search {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	margin-top: 35px;
 }
 .search-container {
 	display: flex;
@@ -74,8 +84,12 @@ a {
 .dropdown-container {
 	display: flex;
 	gap: 10px;
+	&__label {
+		padding-top: 15px;
+	}
 	&__dropdown {
 		border: none;
 		background-color: white;
+		width: 250px;
 	}
 }

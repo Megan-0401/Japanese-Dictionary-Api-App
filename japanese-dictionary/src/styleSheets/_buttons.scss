@@ -31,4 +31,9 @@
 		background-color: palette.$search-btn-hover;
 		@include hover;
 	}
+	&--clear {
+		font-size: typography.$lg-btn-size;
+		background-color: palette.$search-btn;
+		width: 80px;
+	}
 }

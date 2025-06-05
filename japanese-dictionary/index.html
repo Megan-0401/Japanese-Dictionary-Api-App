@@ -12,7 +12,7 @@
 
 		<head>
 			<nav>
-				<div class="site-title">EASY JP DICTIONARY</div>
+				<div class="title--primary title--margin">EASY JP DICTIONARY</div>
 				<ul class="nav-links">
 					<a href="index.html">
 						<button class="btn btn--nav" id="home">HOME</button>
@@ -41,28 +41,33 @@
 					<div id="resultInfo">results: 0</div>
 				</section>
 				<section id="filter">
-					<div>FILTER BY</div>
+					<div class="title--primary">FILTER BY</div>
 					<div class="filter-container">
 						<div class="dropdown-container">
-							<div>word class</div>
+							<div class="dropdown-container__label title--secondary">Word class</div>
 							<select
 								name="class"
 								id="wordClass"
-								class="dropdown-container__dropdown"
+								class="dropdown-container__dropdown title--secondary"
 							>
+								<option value="">Select...</option>
 								<option value="noun">noun</option>
 							</select>
 						</div>
 						<div class="dropdown-container">
-							<div>category</div>
+							<div class="dropdown-container__label title--secondary">Category</div>
 							<select
 								name="category"
 								id="wordCategory"
-								class="dropdown-container__dropdown"
+								class="dropdown-container__dropdown title--secondary"
 							>
+								<option value="">Select...</option>
 								<option value="animals">animals</option>
 							</select>
 						</div>
+						<button id="clearFiltersBtn" class="btn btn--search btn--clear">
+							CLEAR
+						</button>
 					</div>
 				</section>
 			</section>
