@@ -93,3 +93,61 @@ a {
 		width: 250px;
 	}
 }
+
+//RESULTS//
+#results {
+	margin-top: 45px;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+//WORD CONTAINERS//
+.word-container {
+	background: url("../public/assets/paper-5615944.png");
+	width: 560px;
+	height: 450px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	&__main-word {
+		font-size: typography.$lg-primary-word-size;
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+	&__roma-meaning {
+		display: flex;
+		gap: 75px;
+	}
+	&__meaning {
+		font-size: typography.$lg-secondary-word-size;
+	}
+}
+.stacked-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.word-info-container {
+	display: flex;
+	gap: 100px;
+	&__text {
+		font-size: typography.$lg-subtitle-size;
+	}
+}
+//SECTIONS//
+.hiragana {
+	font-size: typography.$lg-secondary-word-size;
+	margin-bottom: 15px;
+}
+.romanji {
+	&--small {
+		font-size: typography.$lg-small-roma-size;
+		margin-top: 0px;
+	}
+}
+.sentence {
+	font-size: typography.$lg-sentence-size;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

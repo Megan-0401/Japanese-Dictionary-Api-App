@@ -118,4 +118,63 @@ a {
   width: 250px;
 }
 
+#results {
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.word-container {
+  background: url("../public/assets/paper-5615944.png");
+  width: 560px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.word-container__main-word {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.word-container__roma-meaning {
+  display: flex;
+  gap: 75px;
+}
+.word-container__meaning {
+  font-size: 24px;
+}
+
+.stacked-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.word-info-container {
+  display: flex;
+  gap: 100px;
+}
+.word-info-container__text {
+  font-size: 13.5px;
+}
+
+.hiragana {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.romanji--small {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+.sentence {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */
