@@ -4,10 +4,10 @@ import type { WordResponse, Word } from "../wordObject";
 export const getAllWords = async () => {
 	const response = await fetch("https://localhost:8080/api/words");
 	const data: WordResponse[] = await response.json();
-	return reformatData(data).then((value) => value);
+	return reformatData(data);
 };
 
-const reformatData = async (wordData: WordResponse[]) => {
+const reformatData = (wordData: WordResponse[]) => {
 	return wordData.map((word) => {
 		const wordClass = word.wordClass.wordClass;
 		let meanings = "";

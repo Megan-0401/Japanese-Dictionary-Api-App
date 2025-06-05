@@ -5,8 +5,8 @@ const getKanjiResultContainerHTML = (word: Word): string => {
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
-					<div class="bookmark">
-						<i class="material-icons bookmark--icon bookmark--hide">bookmark</i>
+					<div class="bookmark bookmark--hide">
+						<i class="material-icons bookmark--icon">bookmark</i>
 					</div>
 					<div class="word-container">
 						<p class="word-container__main-word">${word.kanji}</p>
@@ -34,8 +34,8 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
 					</button>
-					<div class="bookmark">
-						<i class="material-icons bookmark--icon bookmark--hide">bookmark</i>
+					<div class="bookmark bookmark--hide">
+						<i class="material-icons bookmark--icon">bookmark</i>
 					</div>
 					<div class="word-container">
 						<p class="word-container__main-word">${word.hiragana}</p>

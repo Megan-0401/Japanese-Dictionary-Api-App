@@ -43,7 +43,11 @@ if (
 //METHODS//
 
 const fetchAllWords = (): Word[] => {
-	return getAllWords() as unknown as Word[];
+	let wordsList = [] as Word[];
+	const promiseResponse = Promise.resolve(getAllWords());
+	promiseResponse.then((value) => (wordsList = value as Word[]));
+	console.log(wordsList);
+	return wordsList;
 };
 
 const displayResult = (htmlString: string) => {
@@ -56,4 +60,4 @@ const displayAllWords = () => {
 	displayResult(htmlString);
 };
 
-displayAllWords();
+//displayAllWords();
