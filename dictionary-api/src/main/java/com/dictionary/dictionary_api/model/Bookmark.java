@@ -6,14 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "bookmarks")
 public class Bookmark {
     @Id
+    private Integer id;
+
     @ManyToOne
     @JoinColumn(name="word_id")
-    Word word;
+    private Word word;
 
-    @Id
     @ManyToOne
     @JoinColumn(name="user_id")
-    User user;
+    private User user;
 
     public Word getWord() {
         return word;
