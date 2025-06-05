@@ -1,4 +1,5 @@
 import "./style.scss";
+//import type { Word, KanjiWord } from "./wordObject";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -36,3 +37,9 @@ if (
 ) {
 	throw new Error("Some elements could not be found.");
 }
+
+//METHODS//
+
+const displayResult = (htmlString: string) => {
+	resultContainer.innerHTML = htmlString;
+};
