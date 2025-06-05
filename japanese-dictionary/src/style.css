@@ -40,8 +40,8 @@
 }
 .btn--bookmark {
   position: relative;
-  left: 175px;
-  bottom: 35px;
+  left: 430px;
+  top: 30px;
   width: 40px;
   height: 40px;
   background-color: #6fa3a0;
@@ -163,10 +163,15 @@ a {
   flex-wrap: wrap;
 }
 
-.word-container {
+.result-container {
   background: url("../assets/paper-5615944.png");
   width: 560px;
   height: 450px;
+}
+
+.word-container {
+  position: relative;
+  top: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,12 +198,15 @@ a {
   background-color: #ffb271;
   border-radius: 5px;
   position: relative;
-  right: 185px;
-  bottom: 20px;
+  left: 75px;
+  top: 40px;
 }
 .bookmark--icon {
   color: white;
   padding: 5px;
+}
+.bookmark--hide {
+  display: none;
 }
 
 .stacked-container {
@@ -218,7 +226,7 @@ a {
 
 .hiragana {
   font-size: 24px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: #071212;
 }
 
@@ -235,8 +243,8 @@ a {
 
 .sentence {
   font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .sentence--jp {
   color: #071212;

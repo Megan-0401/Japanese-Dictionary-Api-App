@@ -109,11 +109,15 @@ a {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 }
-//WORD CONTAINERS//
-.word-container {
+.result-container {
 	background: url("../assets/paper-5615944.png");
 	width: 560px;
 	height: 450px;
+}
+//WORD CONTAINERS//
+.word-container {
+	position: relative;
+	top: 35px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -139,11 +143,14 @@ a {
 	background-color: palette.$bookmark;
 	border-radius: 5px;
 	position: relative;
-	right: 185px;
-	bottom: 20px;
+	left: 75px;
+	top: 40px;
 	&--icon {
 		color: white;
 		padding: 5px;
+	}
+	&--hide {
+		display: none;
 	}
 }
 .stacked-container {
@@ -162,7 +169,7 @@ a {
 //SECTIONS//
 .hiragana {
 	font-size: typography.$lg-secondary-word-size;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	color: palette.$dark-text;
 }
 .romanji {
@@ -177,8 +184,8 @@ a {
 }
 .sentence {
 	font-size: typography.$lg-sentence-size;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	&--jp {
 		color: palette.$dark-text;
 	}
