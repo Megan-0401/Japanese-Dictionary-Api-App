@@ -20,8 +20,4 @@ public class WordClass {
     public String getWord_class() {
         return word_class;
     }
-
-    public List<Word> getWords() {
-        return words;
-    }
 }

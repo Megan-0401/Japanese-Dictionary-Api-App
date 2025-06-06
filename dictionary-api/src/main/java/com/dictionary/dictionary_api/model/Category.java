@@ -21,8 +21,4 @@ public class Category {
     public String getCategory() {
         return category;
     }
-
-    public List<Word> getWords() {
-        return words;
-    }
 }
