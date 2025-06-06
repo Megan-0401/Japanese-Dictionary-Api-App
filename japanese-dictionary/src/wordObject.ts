@@ -1,17 +1,17 @@
 type Sentence = {
-	jpSentence: string;
-	engSentence: string;
+	jp_sentence: string;
+	eng_sentence: string;
 };
 
 type WordClass = {
-	wordClass: string;
+	word_class: string;
 };
 
-type Meanings = {
+export type Meanings = {
 	english: string;
 };
 
-type Categories = {
+export type Categories = {
 	category: string;
 };
 
@@ -22,8 +22,8 @@ export type WordResponse = {
 	hiragana: string;
 	katakana: string;
 	romanji: string;
-	wordClass: WordClass;
-	sentences: Sentence;
+	word_class: WordClass;
+	sentence: Sentence;
 	meanings: Meanings[];
 	categories: Categories[];
 };
@@ -35,7 +35,7 @@ export type Word = {
 	katakana: string;
 	romanji: string;
 	wordClass: string;
-	sentences: Sentence;
+	sentence: Sentence;
 	meanings: string;
 	categories: string;
 };

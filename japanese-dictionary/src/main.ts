@@ -1,5 +1,4 @@
 import "./style.scss";
-import type { Word } from "./wordObject";
 import { getAllWords } from "./utilities/fetchAPI";
 import { createHTMLString } from "./utilities/htmlFormatter";
 
@@ -42,22 +41,14 @@ if (
 
 //METHODS//
 
-const fetchAllWords = (): Word[] => {
-	let wordsList = [] as Word[];
-	const promiseResponse = Promise.resolve(getAllWords());
-	promiseResponse.then((value) => (wordsList = value as Word[]));
-	console.log(wordsList);
-	return wordsList;
+const displayAllWords = async () => {
+	const wordList = await getAllWords();
+	const htmlString = createHTMLString(wordList);
+	displayResult(htmlString);
 };
 
 const displayResult = (htmlString: string) => {
 	resultContainer.innerHTML = htmlString;
 };
 
-const displayAllWords = () => {
-	const words: Word[] = fetchAllWords();
-	const htmlString = createHTMLString(words);
-	displayResult(htmlString);
-};
-
-//displayAllWords();
+displayAllWords();

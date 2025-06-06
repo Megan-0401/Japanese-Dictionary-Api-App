@@ -18,8 +18,8 @@ const getKanjiResultContainerHTML = (word: Word): string => {
 							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
-							<p class="sentence sentence--jp">${word.sentences.jpSentence}</p>
-							<p class="sentence sentence--eng">${word.sentences.engSentence}</p>
+							<p class="sentence sentence--jp">${word.sentence.jp_sentence}</p>
+							<p class="sentence sentence--eng">${word.sentence.eng_sentence}</p>
 						</div>
 						<div class="word-info-container">
 							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
@@ -32,7 +32,7 @@ const getKanjiResultContainerHTML = (word: Word): string => {
 const getNonKanjiResultContainerHTML = (word: Word): string => {
 	return `<section class="result-container">
 					<button class="btn btn--bookmark">
-						<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
+						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
 					<div class="bookmark bookmark--hide">
 						<i class="material-icons bookmark--icon">bookmark</i>
@@ -44,8 +44,8 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
-							<p class="sentence sentence--jp">${word.sentences.jpSentence}</p>
-							<p class="sentence sentence--eng">${word.sentences.engSentence}</p>
+							<p class="sentence sentence--jp">${word.sentence.jp_sentence}</p>
+							<p class="sentence sentence--eng">${word.sentence.eng_sentence}</p>
 						</div>
 						<div class="word-info-container">
 							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
