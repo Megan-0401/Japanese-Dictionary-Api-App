@@ -23,16 +23,18 @@ INSERT INTO meanings (english) VALUES
 ('hot'),
 ('tomorrow'),
 ('Saturday'),
-('test/exam'),
+('test'),
+('exam'),
 ('meaning');
 
 -- connecting words to meanings
 INSERT INTO word_meanings (word_id, meaning_id) VALUES 
-(11, 12),
-(12, 13),
-(13, 14),
-(14, 15),
-(15, 16),
+(11, 13),
+(12, 14),
+(13, 15),
+(14, 16),
+(15, 17),
+(15, 18),
 (0, 0);
 
 -- connecting words to categories

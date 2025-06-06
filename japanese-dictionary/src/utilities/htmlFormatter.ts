@@ -18,18 +18,30 @@ const getKanjiResultContainerHTML = (word: Word): string => {
 							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
-							<p class="sentence sentence--jp">${word.sentence.jp_sentence}</p>
-							<p class="sentence sentence--eng">${word.sentence.eng_sentence}</p>
+							<p class="sentence sentence--jp">${createSpanHtmlForJpSentence(
+								word.kanji,
+								word.sentence.jp_sentence
+							)}</p>
+							<p class="sentence sentence--eng"><i>${createSpanHtmlForEngSentence(
+								word.meanings,
+								word.sentence.eng_sentence
+							)}</i></p>
 						</div>
 						<div class="word-info-container">
-							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
-							<p class="word-info-container__text">Category: ${word.categories}</p>
+							<p class="word-info-container__text">Word class: <span class="dark-col">${word.wordClass}</span></p>
+							<p class="word-info-container__text">Category: <span class="dark-col">${word.categories}</span></p>
 						</div>
 					</div>
 				</section>`;
 };
 
 const getNonKanjiResultContainerHTML = (word: Word): string => {
+	let mainWord = "";
+	if (word.hiragana === "N/A") {
+		mainWord = word.katakana;
+	} else {
+		mainWord = word.hiragana;
+	}
 	return `<section class="result-container">
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
@@ -38,21 +50,46 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 						<i class="material-icons bookmark--icon">bookmark</i>
 					</div>
 					<div class="word-container">
-						<p class="word-container__main-word">${word.hiragana}</p>
+						<p class="word-container__main-word">${mainWord}</p>
 						<div class="word-container__roma-meaning">
 							<p class="romanji romanji--big">${word.romanji}</p>
 							<p class="word-container__meaning">${word.meanings}</p>
 						</div>
 						<div class="stacked-container">
-							<p class="sentence sentence--jp">${word.sentence.jp_sentence}</p>
-							<p class="sentence sentence--eng">${word.sentence.eng_sentence}</p>
+							<p class="sentence sentence--jp">${createSpanHtmlForJpSentence(
+								mainWord,
+								word.sentence.jp_sentence
+							)}</p>
+							<p class="sentence sentence--eng"><i>${createSpanHtmlForEngSentence(
+								word.meanings,
+								word.sentence.eng_sentence
+							)}</i></p>
 						</div>
 						<div class="word-info-container">
-							<p class="word-info-container__text">Word class: ${word.wordClass}</p>
-							<p class="word-info-container__text">Category: ${word.categories}</p>
+							<p class="word-info-container__text">Word class: <span class="dark-col">${word.wordClass}</span></p>
+							<p class="word-info-container__text">Category: <span class="dark-col">${word.categories}</span></p>
 						</div>
 					</div>
 				</section>`;
+};
+
+const createSpanHtmlForJpSentence = (word: string, sentence: string): string => {
+	const spanHtml = `<span class="dark-teal-col">${word}</span>`;
+	return sentence.replace(word, spanHtml);
+};
+
+const createSpanHtmlForEngSentence = (meanings: string, sentence: string): string => {
+	//FOR MULTIPLE MEANINGS, FIND THE MEANING PRESENT IN THE SENTENCE
+	const meaningsList = meanings.split(",");
+	let wordInSentence = "";
+	for (let i = 0; i < meaningsList.length; i++) {
+		if (sentence.includes(meaningsList[i])) {
+			wordInSentence = meaningsList[i];
+			break;
+		}
+	}
+	const spanHtml = `<span class="light-orange-col">${wordInSentence}</span>`;
+	return sentence.replace(wordInSentence, spanHtml);
 };
 
 export const createHTMLString = (words: Word[]): string => {

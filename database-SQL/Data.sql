@@ -12,10 +12,10 @@ VALUES ('animals'), ('architecture'), ('countries & languages'), ('clothes & fas
 
 -- adding sentences
 INSERT INTO sentences (jp_sentence, eng_sentence)
-VALUES ('あなたは学生ですか？', 'Are you a student?'), ('僕の母は医者です。', 'My mum/mom is a doctor.'),
-('その車はとても高いです！', 'That car is very expensive!'), ('鉛筆はどこですか？', 'Where is the pencil?'),
-('この店でりんごが安いですね。', "The apples at this store are cheap, aren't they?"), ('おいしい寿司が好きです。', 'I like delicious sushi.'),
-('今日は私の誕生日です。', 'Today is my birthday.');
+VALUES ('あなた は 学生 です か？', 'Are you a student?'), ('僕 の 母 は 医者 です。', 'My mum/mom is a doctor.'),
+('その 車 は とても 高い です！', 'That car is very expensive!'), ('鉛筆 は どこ です か？', 'Where is the pencil?'),
+('この 店 で りんご が 安い です ね。', "The apples at this store are cheap, aren't they?"), ('おいしい 寿司 が 好き です。', 'I like delicious sushi.'),
+('今日 は 私 の 誕生日 です。', 'Today is my birthday.');
 
 -- adding words
 INSERT INTO words (kanji, hiragana, katakana, romanji, class_id, sentence_id)
@@ -25,10 +25,10 @@ VALUES ('学生', 'がくせい', 'N/A', 'gakusei', 2, 1), ('N/A', 'あなた', 
 ('今日', 'きょう', 'N/A', 'kyou', 2, 7);
 
 INSERT INTO meanings (english)
-VALUES ('student'), ('you'), ('doctor'), ('car'), ('tall'), ('expensive'), ('pencil'), ('cheap'), ('sushi'), ('delicious/tasty'), ('today');
+VALUES ('student'), ('you'), ('doctor'), ('car'), ('tall'), ('expensive'), ('pencil'), ('cheap'), ('sushi'), ('delicious'), ('tasty'), ('today');
 
 INSERT INTO word_meanings
-VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (5,6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11);
+VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (5,6), (6, 7), (7, 8), (8, 9), (9, 10), (9, 11), (10, 12);
 
 INSERT INTO word_categories
 VALUES (1, 18), (2, 14), (3, 13), (4, 23), (5, 20), (5, 19), (6, 5), (7, 19), (8, 10), (9, 10), (9, 15), (10, 6);
