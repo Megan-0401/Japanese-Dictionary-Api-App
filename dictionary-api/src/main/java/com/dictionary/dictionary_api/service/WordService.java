@@ -27,4 +27,8 @@ public class WordService {
     public List<Word> getWordByCategory(Integer category_id) {
         return wordRepository.findWordByCategory(category_id).orElseThrow();
     }
+
+    public List<Word> getWordByClassAndCategory(Integer class_id, Integer category_id){
+        return wordRepository.findWordByClassAndCategory(class_id, category_id).orElseThrow();
+    }
 }

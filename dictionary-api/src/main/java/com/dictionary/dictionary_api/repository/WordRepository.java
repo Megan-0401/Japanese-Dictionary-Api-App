@@ -20,4 +20,11 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             "WHERE words.id = word_categories.word_id\n" +
             "AND word_categories.category_id = :category_id")
     Optional<List<Word>> findWordByCategory(@Param("category_id") Integer category_id);
+
+    @Query(nativeQuery = true, value = "SELECT words.* FROM words, word_categories\n" +
+            "WHERE words.id = word_categories.word_id\n" +
+            "AND words.class_id = :class_id\n" +
+            "AND word_categories.category_id = :category_id")
+    Optional<List<Word>> findWordByClassAndCategory(@Param("class_id") Integer class_id,
+                                                    @Param("category_id") Integer category_id);
 }

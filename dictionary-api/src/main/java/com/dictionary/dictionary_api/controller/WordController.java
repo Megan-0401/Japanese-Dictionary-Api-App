@@ -25,14 +25,20 @@ public class WordController {
         return wordService.getAllWords();
     }
 
-    @GetMapping("/byclassid/{class_id}")
+    @GetMapping("/byclass/{class_id}")
     public List<Word> getWordByClass(@PathVariable Integer class_id) {
         return wordService.getWordByWordClass(class_id);
     }
 
-    @GetMapping("/bycategoryid/{category_id}")
+    @GetMapping("/bycategory/{category_id}")
     public List<Word> getWordByCategory(@PathVariable Integer category_id) {
         return wordService.getWordByCategory(category_id);
+    }
+
+    @GetMapping("/byfilters/{class_id},{category_id}")
+    public List<Word> getWordByClassAndCategory(@PathVariable Integer class_id,
+                                                @PathVariable Integer category_id) {
+        return wordService.getWordByClassAndCategory(class_id, category_id);
     }
 
 }
