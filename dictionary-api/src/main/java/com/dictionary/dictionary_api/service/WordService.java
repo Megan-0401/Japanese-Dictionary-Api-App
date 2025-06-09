@@ -19,4 +19,8 @@ public class WordService {
     public List<Word> getAllWords() {
         return wordRepository.findAll();
     }
+
+    public List<Word> getWordByWordClass(String wordClass) {
+        return wordRepository.findWordByWordClass(wordClass).orElseThrow();
+    }
 }

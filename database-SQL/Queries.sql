@@ -1,6 +1,6 @@
 USE dictionary;
 
-SELECT words.*, word_classes.*, sentences.*
-FROM words, word_classes, sentences
+-- GET WORDS BY WORD CLASS
+SELECT words.* FROM words, word_classes
 WHERE words.class_id = word_classes.id
-AND words.sentence_id = sentences.id;
+AND word_classes.word_class = "noun";
