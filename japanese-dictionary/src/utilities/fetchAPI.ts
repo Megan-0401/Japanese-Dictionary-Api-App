@@ -7,6 +7,27 @@ export const getAllWords = async () => {
 	return reformatWordData(data);
 };
 
+//GET WORDS BY FILTER//
+export const getWordByClass = async (classId: number) => {
+	const response = await fetch(`http://localhost:8080/api/words/byclass/${classId}`);
+	const data: WordResponse[] = await response.json();
+	return reformatWordData(data);
+};
+
+export const getWordByCategory = async (categoryId: number) => {
+	const response = await fetch(`http://localhost:8080/api/words/bycategory/${categoryId}`);
+	const data: WordResponse[] = await response.json();
+	return reformatWordData(data);
+};
+
+export const getWordByFilters = async (classId: number, categoryId: number) => {
+	const response = await fetch(
+		`http://localhost:8080/api/words/byfilters/${classId},${categoryId}`
+	);
+	const data: WordResponse[] = await response.json();
+	return reformatWordData(data);
+};
+
 //GET ALL WORD CLASSES//
 export const getAllClasses = async () => {
 	const response = await fetch("http://localhost:8080/api/wordclass");
@@ -21,9 +42,11 @@ export const getAllCategories = async () => {
 	return data;
 };
 
+//REFORMATTING RESPONSES//
 const reformatWordData = (wordData: WordResponse[]) => {
 	return wordData.map((word) => {
 		return {
+			id: word.id,
 			kanji: word.kanji,
 			hiragana: word.hiragana,
 			katakana: word.katakana,

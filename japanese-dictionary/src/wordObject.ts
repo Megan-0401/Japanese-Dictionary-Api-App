@@ -4,6 +4,7 @@ type Sentence = {
 };
 
 export type WordClass = {
+	id: number;
 	word_class: string;
 };
 
@@ -12,6 +13,7 @@ export type Meanings = {
 };
 
 export type Categories = {
+	id: number;
 	category: string;
 };
 
@@ -30,6 +32,7 @@ export type WordResponse = {
 
 //WORD//
 export type Word = {
+	id: number;
 	kanji: string;
 	hiragana: string;
 	katakana: string;

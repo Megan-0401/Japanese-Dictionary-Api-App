@@ -1,5 +1,13 @@
 import "./style.scss";
-import { getAllWords, getAllClasses, getAllCategories } from "./utilities/fetchAPI";
+import type { Word } from "./wordObject";
+import {
+	getAllWords,
+	getAllClasses,
+	getAllCategories,
+	getWordByClass,
+	getWordByCategory,
+	getWordByFilters,
+} from "./utilities/fetchAPI";
 import {
 	createHTMLString,
 	createClassFilterHtmlString,
@@ -50,16 +58,48 @@ const handleFilterClearBtnOnClick = () => {
 	displayAllWords();
 };
 
-//EVENT HANDLERS//
-clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
-
-//DISPLAYING DATABASE VALUES ON PAGE ELEMENTS//
-const displayAllWords = async () => {
-	const wordList = await getAllWords();
-	const htmlString = createHTMLString(wordList);
-	displayResult(htmlString);
+const handleDropDownOnChange = () => {
+	//Get the current value of both dropdowns
+	const classId = wordClassDropDown.value;
+	const categoryId = categoryDropDown.value;
+	if (classId != "") {
+		if (categoryId != "") {
+			displayWordsByClassAndCategory(Number(classId), Number(categoryId));
+		} else {
+			displayWordsByClass(Number(classId));
+		}
+	} else if (categoryId != "") {
+		displayWordsByCategory(Number(categoryId));
+	}
 };
 
+//EVENT HANDLERS//
+clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
+wordClassDropDown.addEventListener("change", handleDropDownOnChange);
+categoryDropDown.addEventListener("change", handleDropDownOnChange);
+
+//DISPLAYING WORDS ONTO PAGE//
+const displayAllWords = async () => {
+	const wordList = await getAllWords();
+	displayResult(wordList);
+};
+
+const displayWordsByClass = async (classId: number) => {
+	const wordList = await getWordByClass(classId);
+	displayResult(wordList);
+};
+
+const displayWordsByCategory = async (categoryId: number) => {
+	const wordList = await getWordByCategory(categoryId);
+	displayResult(wordList);
+};
+
+const displayWordsByClassAndCategory = async (classId: number, categoryId: number) => {
+	const wordList = await getWordByFilters(classId, categoryId);
+	displayResult(wordList);
+};
+
+//GETTING FILTER VALUES//
 const getClassFilterOptions = async () => {
 	const classList = await getAllClasses();
 	let htmlString = createClassFilterHtmlString(classList);
@@ -73,7 +113,8 @@ const getCategoryFilterOptions = async () => {
 };
 
 //INSERTING HTML//
-const displayResult = (htmlString: string) => {
+const displayResult = (wordList: Word[]) => {
+	const htmlString = createHTMLString(wordList);
 	resultContainer.innerHTML = htmlString;
 };
 

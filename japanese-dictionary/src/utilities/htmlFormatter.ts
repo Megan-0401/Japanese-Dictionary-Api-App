@@ -1,7 +1,7 @@
 import type { Word, WordClass, Categories } from "../wordObject";
 
 const getKanjiResultContainerHTML = (word: Word): string => {
-	return `<section class="result-container">
+	return `<section value="${word.id}" class="result-container">
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
@@ -42,7 +42,7 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 	} else {
 		mainWord = word.hiragana;
 	}
-	return `<section class="result-container">
+	return `<section value="${word.id}" class="result-container">
 					<button class="btn btn--bookmark">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
@@ -74,11 +74,11 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 };
 
 const getWordClassOptionHTML = (wordClass: WordClass) => {
-	return `<option value="${wordClass.word_class}">${wordClass.word_class}</option>`;
+	return `<option value="${wordClass.id}">${wordClass.word_class}</option>`;
 };
 
 const getCategoryOptionHTML = (category: Categories) => {
-	return `<option value="${category.category}">${category.category}</option>`;
+	return `<option value="${category.id}">${category.category}</option>`;
 };
 
 const createSpanHtmlForJpSentence = (word: string, sentence: string): string => {
