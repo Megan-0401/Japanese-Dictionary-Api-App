@@ -45,6 +45,14 @@ if (
 
 //METHODS//
 
+//EVENT METHODS//
+const handleFilterClearBtnOnClick = () => {
+	displayAllWords();
+};
+
+//EVENT HANDLERS//
+clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
+
 //DISPLAYING DATABASE VALUES ON PAGE ELEMENTS//
 const displayAllWords = async () => {
 	const wordList = await getAllWords();

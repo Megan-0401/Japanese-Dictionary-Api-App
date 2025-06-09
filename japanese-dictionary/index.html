@@ -44,7 +44,7 @@
 				</section>
 				<section id="filter">
 					<div class="title--primary title--teal">FILTER BY</div>
-					<div class="filter-container">
+					<form class="filter-container">
 						<div class="dropdown-container">
 							<div class="dropdown-container__label title--secondary title--teal">
 								Word class
@@ -71,10 +71,13 @@
 								<option value="animals">animals</option>
 							</select>
 						</div>
-						<button id="clearFiltersBtn" class="btn btn--search btn--clear">
-							CLEAR
-						</button>
-					</div>
+						<input
+							id="clearFiltersBtn"
+							class="btn btn--search btn--clear"
+							type="reset"
+							value="CLEAR"
+						/>
+					</form>
 				</section>
 			</section>
 			<div id="results">
