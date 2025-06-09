@@ -3,7 +3,7 @@ type Sentence = {
 	eng_sentence: string;
 };
 
-type WordClass = {
+export type WordClass = {
 	word_class: string;
 };
 

@@ -1,6 +1,10 @@
 import "./style.scss";
-import { getAllWords } from "./utilities/fetchAPI";
-import { createHTMLString } from "./utilities/htmlFormatter";
+import { getAllWords, getAllClasses, getAllCategories } from "./utilities/fetchAPI";
+import {
+	createHTMLString,
+	createClassFilterHtmlString,
+	createCategoryFilterHtmlString,
+} from "./utilities/htmlFormatter";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -41,14 +45,43 @@ if (
 
 //METHODS//
 
+//DISPLAYING DATABASE VALUES ON PAGE ELEMENTS//
 const displayAllWords = async () => {
 	const wordList = await getAllWords();
 	const htmlString = createHTMLString(wordList);
 	displayResult(htmlString);
 };
 
+const getClassFilterOptions = async () => {
+	const classList = await getAllClasses();
+	let htmlString = createClassFilterHtmlString(classList);
+	displayWordClassFilters(htmlString);
+};
+
+const getCategoryFilterOptions = async () => {
+	const categoryList = await getAllCategories();
+	let htmlString = createCategoryFilterHtmlString(categoryList);
+	displayCategoryFilters(htmlString);
+};
+
+//INSERTING HTML//
 const displayResult = (htmlString: string) => {
 	resultContainer.innerHTML = htmlString;
 };
 
-displayAllWords();
+const displayWordClassFilters = (htmlString: string) => {
+	wordClassDropDown.innerHTML = htmlString;
+};
+
+const displayCategoryFilters = (htmlString: string) => {
+	categoryDropDown.innerHTML = htmlString;
+};
+
+//CONFIGURING PAGE//
+const configurePage = () => {
+	displayAllWords();
+	getClassFilterOptions();
+	getCategoryFilterOptions();
+};
+
+configurePage();

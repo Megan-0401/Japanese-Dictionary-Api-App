@@ -1,4 +1,4 @@
-import type { Word } from "../wordObject";
+import type { Word, WordClass, Categories } from "../wordObject";
 
 const getKanjiResultContainerHTML = (word: Word): string => {
 	return `<section class="result-container">
@@ -73,6 +73,14 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 				</section>`;
 };
 
+const getWordClassOptionHTML = (wordClass: WordClass) => {
+	return `<option value="${wordClass.word_class}">${wordClass.word_class}</option>`;
+};
+
+const getCategoryOptionHTML = (category: Categories) => {
+	return `<option value="${category.category}">${category.category}</option>`;
+};
+
 const createSpanHtmlForJpSentence = (word: string, sentence: string): string => {
 	const spanHtml = `<span class="dark-teal-col">${word}</span>`;
 	return sentence.replace(word, spanHtml);
@@ -102,6 +110,22 @@ export const createHTMLString = (words: Word[]): string => {
 			string = getKanjiResultContainerHTML(word);
 		}
 		concattedString += string;
+	}
+	return concattedString;
+};
+
+export const createClassFilterHtmlString = (classList: WordClass[]) => {
+	let concattedString = `<option value="">Select...</option>`;
+	for (const wordClass of classList) {
+		concattedString += getWordClassOptionHTML(wordClass);
+	}
+	return concattedString;
+};
+
+export const createCategoryFilterHtmlString = (categoryList: Categories[]) => {
+	let concattedString = `<option value="">Select...</option>`;
+	for (const category of categoryList) {
+		concattedString += getCategoryOptionHTML(category);
 	}
 	return concattedString;
 };

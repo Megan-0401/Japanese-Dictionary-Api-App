@@ -1,13 +1,27 @@
-import type { WordResponse, Word, Meanings, Categories } from "../wordObject";
+import type { WordResponse, Word, Meanings, Categories, WordClass } from "../wordObject";
 
 //GET ALL WORDS//
 export const getAllWords = async () => {
 	const response = await fetch("http://localhost:8080/api/words");
 	const data: WordResponse[] = await response.json();
-	return reformatData(data);
+	return reformatWordData(data);
 };
 
-const reformatData = (wordData: WordResponse[]) => {
+//GET ALL WORD CLASSES//
+export const getAllClasses = async () => {
+	const response = await fetch("http://localhost:8080/api/wordclass");
+	const data: WordClass[] = await response.json();
+	return data;
+};
+
+//GET ALL CATEGORIES//
+export const getAllCategories = async () => {
+	const response = await fetch("http://localhost:8080/api/categories");
+	const data: Categories[] = await response.json();
+	return data;
+};
+
+const reformatWordData = (wordData: WordResponse[]) => {
 	return wordData.map((word) => {
 		return {
 			kanji: word.kanji,
