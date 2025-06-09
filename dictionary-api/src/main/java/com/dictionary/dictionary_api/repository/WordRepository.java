@@ -12,8 +12,12 @@ import java.util.Optional;
 @Repository
 public interface WordRepository extends JpaRepository<Word, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT words.* FROM words, word_classes\n" +
-            "WHERE words.class_id = word_classes.id\n" +
-            "AND word_classes.word_class = :word_class")
-    Optional<List<Word>> findWordByWordClass(@Param("word_class") String word_class);
+    @Query(nativeQuery = true, value = "SELECT words.* FROM words\n" +
+            "WHERE words.class_id = :class_id")
+    Optional<List<Word>> findWordByWordClass(@Param("class_id") Integer class_id);
+
+    @Query(nativeQuery = true, value = "SELECT words.* FROM words, word_categories\n" +
+            "WHERE words.id = word_categories.word_id\n" +
+            "AND word_categories.category_id = :category_id")
+    Optional<List<Word>> findWordByCategory(@Param("category_id") Integer category_id);
 }

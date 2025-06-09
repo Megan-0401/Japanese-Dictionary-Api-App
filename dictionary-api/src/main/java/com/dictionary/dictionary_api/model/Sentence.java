@@ -25,8 +25,4 @@ public class Sentence {
     public String getEng_sentence() {
         return eng_sentence;
     }
-
-    public List<Word> getWords() {
-        return words;
-    }
 }

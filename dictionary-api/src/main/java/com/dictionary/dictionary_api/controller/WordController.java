@@ -25,9 +25,14 @@ public class WordController {
         return wordService.getAllWords();
     }
 
-    @GetMapping("/byclass/{word_class}")
-    public List<Word> getWordByClass(@PathVariable String word_class) {
-        return wordService.getWordByWordClass(word_class);
+    @GetMapping("/byclassid/{class_id}")
+    public List<Word> getWordByClass(@PathVariable Integer class_id) {
+        return wordService.getWordByWordClass(class_id);
+    }
+
+    @GetMapping("/bycategoryid/{category_id}")
+    public List<Word> getWordByCategory(@PathVariable Integer category_id) {
+        return wordService.getWordByCategory(category_id);
     }
 
 }

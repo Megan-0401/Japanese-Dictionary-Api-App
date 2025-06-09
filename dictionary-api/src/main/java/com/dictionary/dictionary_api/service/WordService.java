@@ -20,7 +20,11 @@ public class WordService {
         return wordRepository.findAll();
     }
 
-    public List<Word> getWordByWordClass(String wordClass) {
-        return wordRepository.findWordByWordClass(wordClass).orElseThrow();
+    public List<Word> getWordByWordClass(Integer class_id) {
+            return wordRepository.findWordByWordClass(class_id).orElseThrow();
+    }
+
+    public List<Word> getWordByCategory(Integer category_id) {
+        return wordRepository.findWordByCategory(category_id).orElseThrow();
     }
 }

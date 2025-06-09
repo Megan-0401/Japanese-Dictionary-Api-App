@@ -16,6 +16,10 @@ public class Bookmark {
     @JoinColumn(name="user_id")
     private User user;
 
+    public Integer getId() {
+        return id;
+    }
+
     public Word getWord() {
         return word;
     }

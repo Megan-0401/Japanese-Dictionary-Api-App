@@ -18,6 +18,10 @@ public class Category {
     @JsonIgnore
     List<Word> words = new ArrayList<>();
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getCategory() {
         return category;
     }

@@ -17,6 +17,10 @@ public class WordClass {
     @JsonIgnore
     private List<Word> words;
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getWord_class() {
         return word_class;
     }
