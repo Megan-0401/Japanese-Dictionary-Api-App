@@ -88,16 +88,17 @@ const createSpanHtmlForJpSentence = (word: string, sentence: string): string => 
 
 const createSpanHtmlForEngSentence = (meanings: string, sentence: string): string => {
 	//FOR MULTIPLE MEANINGS, FIND THE MEANING PRESENT IN THE SENTENCE
+	const sentenceLowerCase = sentence.toLowerCase();
 	const meaningsList = meanings.split(",");
 	let wordInSentence = "";
 	for (let i = 0; i < meaningsList.length; i++) {
-		if (sentence.includes(meaningsList[i])) {
+		if (sentenceLowerCase.includes(meaningsList[i])) {
 			wordInSentence = meaningsList[i];
 			break;
 		}
 	}
 	const spanHtml = `<span class="light-orange-col">${wordInSentence}</span>`;
-	return sentence.replace(wordInSentence, spanHtml);
+	return sentenceLowerCase.replace(wordInSentence, spanHtml);
 };
 
 export const createHTMLString = (words: Word[]): string => {
