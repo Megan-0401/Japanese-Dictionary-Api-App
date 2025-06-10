@@ -20,6 +20,7 @@ public class WordService {
         return wordRepository.findAll();
     }
 
+    //FILTERS//
     public List<Word> getWordByWordClass(Integer class_id) {
             return wordRepository.findWordByWordClass(class_id).orElseThrow();
     }
@@ -30,5 +31,18 @@ public class WordService {
 
     public List<Word> getWordByClassAndCategory(Integer class_id, Integer category_id){
         return wordRepository.findWordByClassAndCategory(class_id, category_id).orElseThrow();
+    }
+
+    //SEARCH//
+    public List<Word> getWordByEnglish(String eng_search){
+        return wordRepository.findWordByEnglish(eng_search).orElseThrow();
+    }
+
+    public List<Word> getWordByRomanji(String roman_search){
+        return wordRepository.findWordByRomanji(roman_search).orElseThrow();
+    }
+
+    public List<Word> getWordByJapanese(String jp_search){
+        return wordRepository.findWordByJapanese(jp_search).orElseThrow();
     }
 }
