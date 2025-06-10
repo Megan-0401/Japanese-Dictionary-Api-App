@@ -43,19 +43,9 @@ public class WordController {
     }
 
     //SEARCH//
-    @GetMapping("/bysearch/eng/{eng_search}")
-    public List<Word> getWordByEnglish(@PathVariable String eng_search){
-        return wordService.getWordByEnglish(eng_search);
-    }
-
-    @GetMapping("/bysearch/roman/{roman_search}")
-    public List<Word> getWordByRomanji(@PathVariable String roman_search){
-        return wordService.getWordByRomanji(roman_search);
-    }
-
-    @GetMapping("/bysearch/jp/{jp_search}")
-    public List<Word> getWordByJapanese(@PathVariable String jp_search){
-        return wordService.getWordByJapanese(jp_search);
+    @GetMapping("/bysearch/{search}")
+    public List<Word> getWordByEnglish(@PathVariable String search){
+        return wordService.getWordBySearch(search);
     }
 
 }

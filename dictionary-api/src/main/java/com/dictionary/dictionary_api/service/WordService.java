@@ -5,6 +5,8 @@ import com.dictionary.dictionary_api.repository.WordRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class WordService {
@@ -34,12 +36,17 @@ public class WordService {
     }
 
     //SEARCH//
-    public List<Word> getWordByEnglish(String eng_search){
-        return wordRepository.findWordByEnglish(eng_search).orElseThrow();
+    public List<Word> getWordBySearch(String search){
+        if(search.matches("[a-zA-Z]+")){
+            return getWordByRoman(search);
+        }
+        return getWordByJapanese(search);
     }
 
-    public List<Word> getWordByRomanji(String roman_search){
-        return wordRepository.findWordByRomanji(roman_search).orElseThrow();
+    public List<Word> getWordByRoman(String roman_search){
+        Stream<Word> engStream = wordRepository.findWordByEnglish(roman_search).orElseThrow().stream();
+        Stream<Word> romanjiStream = wordRepository.findWordByRomanji(roman_search).orElseThrow().stream();
+        return Stream.concat(engStream, romanjiStream).distinct().toList();
     }
 
     public List<Word> getWordByJapanese(String jp_search){
