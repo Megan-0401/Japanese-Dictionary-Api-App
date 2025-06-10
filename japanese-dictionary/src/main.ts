@@ -4,6 +4,7 @@ import {
 	getAllWords,
 	getAllClasses,
 	getAllCategories,
+	getWordBySearch,
 	getWordByClass,
 	getWordByCategory,
 	getWordByFilters,
@@ -73,14 +74,29 @@ const handleDropDownOnChange = () => {
 	}
 };
 
+const handleSearchBtnOnClick = () => {
+	const searchTerm = userSearch.value;
+	if (searchTerm != "") {
+		displayWordsBySearch(searchTerm);
+	} else {
+		displayAllWords();
+	}
+};
+
 //EVENT HANDLERS//
 clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
 wordClassDropDown.addEventListener("change", handleDropDownOnChange);
 categoryDropDown.addEventListener("change", handleDropDownOnChange);
+searchBtn.addEventListener("click", handleSearchBtnOnClick);
 
 //DISPLAYING WORDS ONTO PAGE//
 const displayAllWords = async () => {
 	const wordList = await getAllWords();
+	displayResult(wordList);
+};
+
+const displayWordsBySearch = async (searchTerm: string) => {
+	const wordList = await getWordBySearch(searchTerm);
 	displayResult(wordList);
 };
 

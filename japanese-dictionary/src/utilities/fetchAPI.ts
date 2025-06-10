@@ -7,6 +7,13 @@ export const getAllWords = async () => {
 	return reformatWordData(data);
 };
 
+//GET WORDS BY SEARCH//
+export const getWordBySearch = async (searchTerm: string) => {
+	const response = await fetch(`http://localhost:8080/api/words/bysearch/${searchTerm}`);
+	const data: WordResponse[] = await response.json();
+	return reformatWordData(data);
+};
+
 //GET WORDS BY FILTER//
 export const getWordByClass = async (classId: number) => {
 	const response = await fetch(`http://localhost:8080/api/words/byclass/${classId}`);
