@@ -5,9 +5,11 @@ $lg-primary-header-size: 30px;
 $lg-secondary-header-size: 25px;
 $lg-btn-size: 24px;
 $lg-seach-text-size: 25px;
+$lg-form-title-size: 35px;
 
 //SECONDARY FONT SIZES//
 $lg-search-count-size: 20px;
+$lg-form-field-size: 25px;
 
 //WORD FONT SIZES//
 $lg-primary-word-size: 30px;
@@ -21,6 +23,8 @@ p,
 div,
 button,
 input,
-select {
+select,
+legend,
+label {
 	font-family: "Afacad";
 }

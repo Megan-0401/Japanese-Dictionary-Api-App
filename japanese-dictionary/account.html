@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>JP Dictionary: Account</title>
+		<link href="https://fonts.googleapis.com/css?family=Afacad" rel="stylesheet" />
+	</head>
+	<body>
+		<script type="module" src="/src/main.ts"></script>
+		<head>
+			<nav>
+				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
+				<ul class="nav-links">
+					<a href="index.html">
+						<button class="btn btn--nav" id="home">HOME</button>
+					</a>
+					<button class="btn btn--nav" id="info">INFO</button>
+					<button class="btn btn--nav" id="bookmarks">BOOKMARKS</button>
+					<a href="account.html">
+						<button class="btn btn--nav" id="accounts">LOGIN/SIGN-UP</button>
+					</a>
+				</ul>
+			</nav>
+		</head>
+		<section class="form-container">
+			<form id="login">
+				<fieldset>
+					<legend>LOG-IN:</legend>
+					<div class="form-container__input">
+						<label for="loginUsername">Username:</label>
+						<input
+							type="text"
+							id="loginUsername"
+							name="loginUsername"
+							class="form-container__input-bar"
+						/>
+						<label for="loginPassword">Password:</label>
+						<input
+							type="password"
+							id="loginPassword"
+							name="loginPassword"
+							class="form-container__input-bar"
+						/>
+						<input
+							id="submitSignup"
+							class="btn btn--submit"
+							type="submit"
+							value="LOG IN"
+						/>
+					</div>
+				</fieldset>
+			</form>
+			<form id="signup">
+				<fieldset>
+					<legend>SIGN-UP:</legend>
+					<div class="form-container__input">
+						<label for="signupUsername">Username:</label>
+						<input
+							type="text"
+							id="signupUsername"
+							name="signupUsername"
+							class="form-container__input-bar"
+						/>
+						<label for="signupPassword">Password:</label>
+						<input
+							type="password"
+							id="signupPassword"
+							name="signupPassword"
+							class="form-container__input-bar"
+						/>
+						<input
+							id="submitLogin"
+							class="btn btn--submit"
+							type="submit"
+							value="SIGN UP"
+						/>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+	</body>
+</html>

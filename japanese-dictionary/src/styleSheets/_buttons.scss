@@ -55,4 +55,15 @@
 	&--bookmark-icon {
 		color: white;
 	}
+
+	//ACCOUNTS//
+	&--submit {
+		background-color: palette.$teal-btn;
+		font-size: typography.$lg-form-field-size;
+		color: palette.$dark-text;
+	}
+	&--submit:hover {
+		background-color: palette.$teal-btn-hover;
+		@include hover;
+	}
 }

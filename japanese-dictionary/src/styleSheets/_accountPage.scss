@@ -1,0 +1,39 @@
+@use "./palette";
+@use "./typography";
+@use "./buttons";
+
+legend {
+	font-size: typography.$lg-form-title-size;
+	color: palette.$dark-text;
+}
+
+fieldset {
+	border-radius: 5px;
+	border: 2px solid palette.$dark-teal-text;
+}
+
+label {
+	font-size: typography.$lg-form-field-size;
+	color: palette.$dark-text;
+}
+
+.form-container {
+	margin-top: 125px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+	&__input {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+	}
+	&__input-bar {
+		font-size: typography.$lg-form-field-size;
+		border: none;
+		border-radius: 5px;
+	}
+}
