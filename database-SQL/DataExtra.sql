@@ -18,7 +18,9 @@ INSERT INTO sentences (jp_sentence, eng_sentence) VALUES
 ('君　の　恋人　は　誰　です　か？', 'Who is your lover?'),
 ('本田さん　は　大学　の　先生　です。', 'Mr. Honda is a university teacher.'),
 ('面白い　雑誌　を　読んでいます。', "I'm reading an interesting magazine."),
-('jp', 'eng');
+('お母さん　と　日本語　が　話します。', 'I speak Japanese with my mum/mom.'),
+('あの　本　を　貸して　ください。','Please lend me that book over there.'),
+('jp','eng');
 
 -- adding words
 INSERT INTO words (kanji, hiragana, katakana, romanji, class_id, sentence_id) VALUES 
@@ -42,6 +44,11 @@ INSERT INTO words (kanji, hiragana, katakana, romanji, class_id, sentence_id) VA
 ('大学', 'だいがく', 'N/A', 'daigaku', 2, 22),
 ('先生', 'せんせい', 'N/A', 'sensei', 2, 22),
 ('雑誌', 'ざっし', 'N/A', 'zasshi', 2, 23),
+('話す', 'はなす', 'N/A', 'hanasu', 5, 24),
+('書く', 'かく', 'N/A', 'kaku', 5, 18),
+('読む', 'よむ', 'N/A', 'yomu', 5, 23),
+('寝る', 'ねる', 'N/A', 'neru', 5, 19),
+('貸す', 'かす', 'N/A', 'kasu', 5, 25),
 ('kanji', 'hiragana', 'katakana', 'romanji', 0, 0);
 
 -- adding meanings
@@ -51,7 +58,8 @@ INSERT INTO meanings (english) VALUES
 ('lively'), ('healthy'), ('office worker'), ('handsome'), ('here'),
 ('famous'), ('this'), ('pen'), ('room'), ('Sunday'),
 ('lover'), ('boyfriend'), ('girlfriend'), ('university'), ('teacher'),
-('magazine'),
+('magazine'), ('to speak'), ('to write'), ('to read'), ('to sleep'),
+('to lend'),
 ('meaning');
 
 -- connecting words to meanings
@@ -76,6 +84,11 @@ INSERT INTO word_meanings (word_id, meaning_id) VALUES
 (28, 36),
 (29, 37),
 (30, 38),
+(31, 39),
+(32, 40),
+(33, 41),
+(34, 42),
+(35, 43),
 (0, 0);
 
 -- connecting words to categories
@@ -100,4 +113,9 @@ INSERT INTO word_categories (word_id, category_id) VALUES
 (28, 2), (28, 18),
 (29, 13), (29, 18),
 (30, 11),
+(31, 26),
+(32, 5),
+(33, 11),
+(34, 26),
+(35, 26),
 (0, 0);
