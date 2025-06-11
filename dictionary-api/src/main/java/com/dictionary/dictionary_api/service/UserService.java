@@ -1,6 +1,6 @@
 package com.dictionary.dictionary_api.service;
 
-import com.dictionary.dictionary_api.EncryptionConfig;
+import com.dictionary.dictionary_api.config.EncryptionConfig;
 import com.dictionary.dictionary_api.model.User;
 import com.dictionary.dictionary_api.repository.UserRepository;
 import org.springframework.http.HttpStatus;
