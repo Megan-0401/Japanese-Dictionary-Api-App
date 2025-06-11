@@ -1,6 +1,7 @@
 package com.dictionary.dictionary_api.repository;
 
 import com.dictionary.dictionary_api.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //CHECKING IF USER EXISTS//
     Boolean existsByUsername (String username);
+
+    //CREATING USER//
+    @Transactional
+    default User insertUser(User user){
+        return save(user);
+    }
 }

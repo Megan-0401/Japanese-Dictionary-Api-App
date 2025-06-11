@@ -1,39 +1,38 @@
 package com.dictionary.dictionary_api.service;
 
+import com.dictionary.dictionary_api.EncryptionConfig;
 import com.dictionary.dictionary_api.model.User;
 import com.dictionary.dictionary_api.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final EncryptionConfig encryptionConfig;
 
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, EncryptionConfig encryptionConfig) {
         this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.encryptionConfig = encryptionConfig;
     }
 
     //METHODS//
 
+    //GET (READ)//
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     public ResponseEntity<User> getLoggedInUser(String username, String password) {
-        List<User> userList = userRepository.findAll();
         User userInDatabase = getUserByUsername(username);
         if(userInDatabase != null){
             String passwordInDatabase = userInDatabase.getPassword();
-            if(bCryptPasswordEncoder.matches(password,passwordInDatabase)) {
+            if(encryptionConfig.passwordEncoder().matches(password, passwordInDatabase)) {
                 return new ResponseEntity<>(userInDatabase, HttpStatus.OK);
-            } else{
+            } else {
                 //password does not match
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
@@ -50,7 +49,28 @@ public class UserService {
         return null;
     }
 
+    //POST (CREATE)//
+
+    public ResponseEntity<User> createUser(String username, String password){
+        User userInDatabase = getUserByUsername(username);
+        if(userInDatabase == null){
+            User user = userRepository.insertUser(createUserEntity(username,password));
+            return new ResponseEntity<>(user, HttpStatus.OK);
+
+        } else {
+            //username already exists
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    private User createUserEntity(String username, String password){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(encryptPassword((password)));
+        return user;
+    }
+
     private String encryptPassword(String password){
-        return bCryptPasswordEncoder.encode(password);
+        return encryptionConfig.passwordEncoder().encode(password);
     }
 }

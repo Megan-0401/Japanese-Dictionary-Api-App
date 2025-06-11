@@ -4,10 +4,7 @@ import com.dictionary.dictionary_api.model.User;
 import com.dictionary.dictionary_api.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +28,11 @@ public class UserController {
     public ResponseEntity<User> getLoggedInUser(@PathVariable String username,
                                           @PathVariable String password) {
         return userService.getLoggedInUser(username, password);
+    }
+
+    @PostMapping("/signup/{username},{password}")
+    public ResponseEntity<User> createUser(@PathVariable String username,
+                                           @PathVariable String password) {
+        return userService.createUser(username, password);
     }
 }
