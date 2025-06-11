@@ -4,6 +4,7 @@ import com.dictionary.dictionary_api.model.User;
 import com.dictionary.dictionary_api.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     //METHODS//
@@ -27,7 +30,8 @@ public class UserService {
         List<User> userList = userRepository.findAll();
         User userInDatabase = getUserByUsername(username);
         if(userInDatabase != null){
-            if(userInDatabase.getPassword().equals(password)) {
+            String passwordInDatabase = userInDatabase.getPassword();
+            if(bCryptPasswordEncoder.matches(password,passwordInDatabase)) {
                 return new ResponseEntity<>(userInDatabase, HttpStatus.OK);
             } else{
                 //password does not match
@@ -44,5 +48,9 @@ public class UserService {
             return userRepository.findByUsername(username).orElseThrow();
         }
         return null;
+    }
+
+    private String encryptPassword(String password){
+        return bCryptPasswordEncoder.encode(password);
     }
 }
