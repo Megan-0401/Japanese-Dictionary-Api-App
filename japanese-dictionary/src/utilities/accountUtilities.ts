@@ -1,10 +1,14 @@
 import "../style.scss";
+import { postNewAccount } from "./postAPI";
 
 //CAPTURING DOM ELEMENTS//
 
 //FORM BUTTONS//
 const loginFormBtn = document.querySelector<HTMLButtonElement>("#loginFormBtn");
 const signupFormBtn = document.querySelector<HTMLButtonElement>("#signupFormBtn");
+
+//FORM//
+const formContainer = document.querySelector<HTMLDivElement>(".form-container__input");
 
 //FORM INPUTS//
 const usernameInput = document.querySelector<HTMLInputElement>("#usernameInput");
@@ -17,6 +21,7 @@ const signupBtn = document.querySelector<HTMLButtonElement>("#signupBtn");
 if (
 	!loginFormBtn ||
 	!signupFormBtn ||
+	!formContainer ||
 	!usernameInput ||
 	!passwordInput ||
 	!loginBtn ||
@@ -25,12 +30,16 @@ if (
 	throw new Error("Some elements could not be found.");
 }
 
+//GLOBAL//
+const message = document.createElement("p");
+
 //METHODS//
 
 //EVENT HANDLERS//
 const handleLoginFormBtnOnClick = () => {
 	loginBtn.style.display = "initial";
 	signupBtn.style.display = "none";
+	formContainer.removeChild(message);
 };
 
 const handleSingupFormBtnOnClick = () => {
@@ -38,6 +47,29 @@ const handleSingupFormBtnOnClick = () => {
 	signupBtn.style.display = "initial";
 };
 
+const handleSignUpBtnOnClick = () => {
+	const username = usernameInput.value;
+	const password = passwordInput.value;
+	validatePassword(username, password);
+};
+
 //EVENT LISTENERS//
 loginFormBtn.addEventListener("click", handleLoginFormBtnOnClick);
 signupFormBtn.addEventListener("click", handleSingupFormBtnOnClick);
+signupBtn.addEventListener("click", handleSignUpBtnOnClick);
+
+//ACCOUNT CREATION//
+
+const validatePassword = (username: string, password: string) => {
+	if (password.length >= 8) {
+		createNewAccount(username, password);
+	} else {
+		message.innerText = "Password length must be 8 characters minimum.";
+		formContainer.appendChild(message);
+	}
+};
+
+const createNewAccount = async (username: string, password: string) => {
+	message.innerText = await postNewAccount(username, password);
+	formContainer.appendChild(message);
+};
