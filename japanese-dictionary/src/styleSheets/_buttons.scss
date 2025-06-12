@@ -57,13 +57,16 @@
 	}
 
 	//ACCOUNTS//
-	&--submit {
+	&--form {
 		background-color: palette.$teal-btn;
 		font-size: typography.$lg-form-field-size;
 		color: palette.$dark-text;
 	}
-	&--submit:hover {
+	&--form:hover {
 		background-color: palette.$teal-btn-hover;
 		@include hover;
+	}
+	&--no-rounding {
+		border-radius: 0;
 	}
 }

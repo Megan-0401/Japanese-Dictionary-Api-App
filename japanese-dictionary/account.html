@@ -23,10 +23,13 @@
 				</ul>
 			</nav>
 		</head>
-		<section class="form-container">
-			<form id="login">
-				<fieldset>
-					<legend>LOG-IN:</legend>
+		<section class="account-container">
+			<div class="account-container--btns">
+				<button id="loginFormBtn" class="btn btn--form btn--no-rounding">LOGIN</button>
+				<button id="signupFormBtn" class="btn btn--form btn--no-rounding">SIGN-UP</button>
+			</div>
+			<div class="form-container">
+				<form id="login">
 					<div class="form-container__input">
 						<label for="loginUsername">Username:</label>
 						<input
@@ -44,40 +47,40 @@
 						/>
 						<input
 							id="submitSignup"
-							class="btn btn--submit"
+							class="btn btn--form"
 							type="submit"
 							value="LOG IN"
 						/>
 					</div>
-				</fieldset>
-			</form>
-			<form id="signup">
-				<fieldset>
-					<legend>SIGN-UP:</legend>
-					<div class="form-container__input">
-						<label for="signupUsername">Username:</label>
-						<input
-							type="text"
-							id="signupUsername"
-							name="signupUsername"
-							class="form-container__input-bar"
-						/>
-						<label for="signupPassword">Password:</label>
-						<input
-							type="password"
-							id="signupPassword"
-							name="signupPassword"
-							class="form-container__input-bar"
-						/>
-						<input
-							id="submitLogin"
-							class="btn btn--submit"
-							type="submit"
-							value="SIGN UP"
-						/>
-					</div>
-				</fieldset>
-			</form>
+				</form>
+				<form id="signup">
+					<fieldset>
+						<legend>SIGN-UP:</legend>
+						<div class="form-container__input">
+							<label for="signupUsername">Username:</label>
+							<input
+								type="text"
+								id="signupUsername"
+								name="signupUsername"
+								class="form-container__input-bar"
+							/>
+							<label for="signupPassword">Password:</label>
+							<input
+								type="password"
+								id="signupPassword"
+								name="signupPassword"
+								class="form-container__input-bar"
+							/>
+							<input
+								id="submitLogin"
+								class="btn btn--form"
+								type="submit"
+								value="SIGN UP"
+							/>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 		</section>
 	</body>
 </html>

@@ -7,33 +7,44 @@ legend {
 	color: palette.$dark-text;
 }
 
-fieldset {
-	border-radius: 5px;
-	border: 2px solid palette.$dark-teal-text;
-}
-
 label {
 	font-size: typography.$lg-form-field-size;
 	color: palette.$dark-text;
 }
 
-.form-container {
-	margin-top: 125px;
+.account-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	gap: 50px;
+	margin-top: 125px;
+	&--btns {
+		display: flex;
+		margin-right: 330px;
+	}
+}
+
+.form-container {
+	border: 2px solid palette.$dark-teal-text;
+	border-radius: 5px;
+	padding: 20px;
+	width: 500px;
 	&__input {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 10px;
+		gap: 15px;
 	}
 	&__input-bar {
 		font-size: typography.$lg-form-field-size;
 		border: none;
 		border-radius: 5px;
 	}
+}
+
+#login {
+	display: initial;
+}
+#signup {
+	display: none;
 }
