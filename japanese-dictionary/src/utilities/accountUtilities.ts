@@ -1,5 +1,7 @@
 import "../style.scss";
 import { postNewAccount } from "./postAPI";
+import { getUserLogin } from "./fetchAPI";
+import { displayUser } from "../main";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -53,10 +55,17 @@ const handleSignUpBtnOnClick = () => {
 	validatePassword(username, password);
 };
 
+const handleLoginBtnOnClick = () => {
+	const username = usernameInput.value;
+	const password = passwordInput.value;
+	loginUser(username, password);
+};
+
 //EVENT LISTENERS//
 loginFormBtn.addEventListener("click", handleLoginFormBtnOnClick);
 signupFormBtn.addEventListener("click", handleSingupFormBtnOnClick);
 signupBtn.addEventListener("click", handleSignUpBtnOnClick);
+loginBtn.addEventListener("click", handleLoginBtnOnClick);
 
 //ACCOUNT CREATION//
 
@@ -72,4 +81,28 @@ const validatePassword = (username: string, password: string) => {
 const createNewAccount = async (username: string, password: string) => {
 	message.innerText = await postNewAccount(username, password);
 	formContainer.appendChild(message);
+};
+
+//ACCOUNT LOGIN//
+
+const loginUser = async (username: string, password: string) => {
+	formContainer.removeChild(message);
+	const user = await getUserLogin(username, password);
+	switch (user.response_code) {
+		case 200:
+			displayUser(user);
+			break;
+		case 404:
+			message.innerText = "User not found.";
+			formContainer.appendChild(message);
+			break;
+		case 400:
+			message.innerText = "Password is incorrect.";
+			formContainer.appendChild(message);
+			break;
+		default:
+			message.innerText = "An error occured. Please try again.";
+			formContainer.appendChild(message);
+			break;
+	}
 };

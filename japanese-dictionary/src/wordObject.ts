@@ -17,6 +17,12 @@ export type Categories = {
 	category: string;
 };
 
+export type User = {
+	id: number;
+	username: string;
+	response_code: number;
+};
+
 //RESPONSE//
 export type WordResponse = {
 	id: number;

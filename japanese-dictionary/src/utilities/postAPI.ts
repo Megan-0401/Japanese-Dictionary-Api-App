@@ -1,6 +1,6 @@
 //POST NEW ACCOUNT//
 export const postNewAccount = async (username: string, password: string): Promise<string> => {
-	const response = await fetch(`http://localhost:8080/api//login/${username},${password}`, {
+	const response = await fetch(`http://localhost:8080/api/signup/${username},${password}`, {
 		method: "POST",
 	});
 

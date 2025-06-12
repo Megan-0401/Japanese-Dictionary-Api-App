@@ -46,6 +46,15 @@ a {
 	gap: 30px;
 }
 
+//USER//
+#userAccount {
+	position: relative;
+	top: 85px;
+	left: 35px;
+	font-size: typography.$lg-seach-text-size;
+	color: palette.$dark-text;
+}
+
 //LOOK UP//
 #lookUp {
 	margin-top: 125px;

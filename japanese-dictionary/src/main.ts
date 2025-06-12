@@ -1,5 +1,5 @@
 import "./style.scss";
-import type { Word } from "./wordObject";
+import type { Word, User } from "./wordObject";
 import {
 	getAllWords,
 	getAllClasses,
@@ -23,6 +23,9 @@ const infoBtn = document.querySelector<HTMLButtonElement>("#info");
 const listBookmarksBtn = document.querySelector<HTMLButtonElement>("#bookmarks");
 const accountBtn = document.querySelector<HTMLButtonElement>("#accounts");
 
+//ACCOUNT//
+const userInfo = document.querySelector<HTMLDivElement>("#userAccount");
+
 //SEARCH ELEMENTS//
 const userSearch = document.querySelector<HTMLInputElement>("#searchBar");
 const searchBtn = document.querySelector<HTMLButtonElement>("#searchBtn");
@@ -41,6 +44,7 @@ if (
 	!infoBtn ||
 	!listBookmarksBtn ||
 	!accountBtn ||
+	!userInfo ||
 	!userSearch ||
 	!searchBtn ||
 	!resultInfo ||
@@ -140,6 +144,11 @@ const displayWordClassFilters = (htmlString: string) => {
 
 const displayCategoryFilters = (htmlString: string) => {
 	categoryDropDown.innerHTML = htmlString;
+};
+
+export const displayUser = (user: User) => {
+	userInfo.innerText = "Hello, " + user.username;
+	userInfo.setAttribute("data-user", user.id.toString());
 };
 
 //CONFIGURING PAGE//
