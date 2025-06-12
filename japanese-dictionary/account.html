@@ -7,8 +7,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Afacad" rel="stylesheet" />
 	</head>
 	<body>
-		<script type="module" src="/src/main.ts"></script>
 		<script type="module" src="/src/utilities/accountUtilities.ts"></script>
+		<script type="module" src="/src/main.ts"></script>
 		<head>
 			<nav>
 				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
@@ -30,24 +30,24 @@
 				<button id="signupFormBtn" class="btn btn--form btn--no-rounding">SIGN-UP</button>
 			</div>
 			<div class="form-container">
-				<form class="form-container__input">
+				<div class="form-container__input">
 					<label for="username">Username:</label>
 					<input
 						type="text"
-						id="username"
+						id="usernameInput"
 						name="username"
 						class="form-container__input-bar"
 					/>
 					<label for="password">Password:</label>
 					<input
 						type="password"
-						id="password"
+						id="passwordInput"
 						name="password"
 						class="form-container__input-bar"
 					/>
-					<input id="submitLogin" class="btn btn--form" type="submit" value="LOG IN" />
-					<input id="submitSignup" class="btn btn--form" type="submit" value="SIGN UP" />
-				</form>
+					<button id="loginBtn" class="btn btn--form">LOG IN</button>
+					<button id="signupBtn" class="btn btn--form">SIGN-UP</button>
+				</div>
 			</div>
 		</section>
 	</body>
