@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<script type="module" src="/src/main.ts"></script>
+		<script type="module" src="/src/utilities/accountUtilities.ts"></script>
 		<head>
 			<nav>
 				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
@@ -29,56 +30,23 @@
 				<button id="signupFormBtn" class="btn btn--form btn--no-rounding">SIGN-UP</button>
 			</div>
 			<div class="form-container">
-				<form id="login">
-					<div class="form-container__input">
-						<label for="loginUsername">Username:</label>
-						<input
-							type="text"
-							id="loginUsername"
-							name="loginUsername"
-							class="form-container__input-bar"
-						/>
-						<label for="loginPassword">Password:</label>
-						<input
-							type="password"
-							id="loginPassword"
-							name="loginPassword"
-							class="form-container__input-bar"
-						/>
-						<input
-							id="submitSignup"
-							class="btn btn--form"
-							type="submit"
-							value="LOG IN"
-						/>
-					</div>
-				</form>
-				<form id="signup">
-					<fieldset>
-						<legend>SIGN-UP:</legend>
-						<div class="form-container__input">
-							<label for="signupUsername">Username:</label>
-							<input
-								type="text"
-								id="signupUsername"
-								name="signupUsername"
-								class="form-container__input-bar"
-							/>
-							<label for="signupPassword">Password:</label>
-							<input
-								type="password"
-								id="signupPassword"
-								name="signupPassword"
-								class="form-container__input-bar"
-							/>
-							<input
-								id="submitLogin"
-								class="btn btn--form"
-								type="submit"
-								value="SIGN UP"
-							/>
-						</div>
-					</fieldset>
+				<form class="form-container__input">
+					<label for="username">Username:</label>
+					<input
+						type="text"
+						id="username"
+						name="username"
+						class="form-container__input-bar"
+					/>
+					<label for="password">Password:</label>
+					<input
+						type="password"
+						id="password"
+						name="password"
+						class="form-container__input-bar"
+					/>
+					<input id="submitLogin" class="btn btn--form" type="submit" value="LOG IN" />
+					<input id="submitSignup" class="btn btn--form" type="submit" value="SIGN UP" />
 				</form>
 			</div>
 		</section>
