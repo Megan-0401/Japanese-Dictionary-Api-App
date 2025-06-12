@@ -1,7 +1,6 @@
 import "../style.scss";
 import { postNewAccount } from "./postAPI";
-import { getUserLogin } from "./fetchAPI";
-import { displayUser } from "../main";
+import { getLoginResponseCode } from "./fetchAPI";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -20,6 +19,9 @@ const passwordInput = document.querySelector<HTMLInputElement>("#passwordInput")
 const loginBtn = document.querySelector<HTMLButtonElement>("#loginBtn");
 const signupBtn = document.querySelector<HTMLButtonElement>("#signupBtn");
 
+//MESSAGE//
+const message = document.querySelector<HTMLParagraphElement>("#message");
+
 if (
 	!loginFormBtn ||
 	!signupFormBtn ||
@@ -27,13 +29,11 @@ if (
 	!usernameInput ||
 	!passwordInput ||
 	!loginBtn ||
-	!signupBtn
+	!signupBtn ||
+	!message
 ) {
 	throw new Error("Some elements could not be found.");
 }
-
-//GLOBAL//
-const message = document.createElement("p");
 
 //METHODS//
 
@@ -41,23 +41,26 @@ const message = document.createElement("p");
 const handleLoginFormBtnOnClick = () => {
 	loginBtn.style.display = "initial";
 	signupBtn.style.display = "none";
-	formContainer.removeChild(message);
+	message.style.display = "none";
 };
 
 const handleSingupFormBtnOnClick = () => {
 	loginBtn.style.display = "none";
 	signupBtn.style.display = "initial";
+	message.style.display = "none";
 };
 
 const handleSignUpBtnOnClick = () => {
 	const username = usernameInput.value;
 	const password = passwordInput.value;
+	message.style.display = "none";
 	validatePassword(username, password);
 };
 
 const handleLoginBtnOnClick = () => {
 	const username = usernameInput.value;
 	const password = passwordInput.value;
+	message.style.display = "none";
 	loginUser(username, password);
 };
 
@@ -74,35 +77,33 @@ const validatePassword = (username: string, password: string) => {
 		createNewAccount(username, password);
 	} else {
 		message.innerText = "Password length must be 8 characters minimum.";
-		formContainer.appendChild(message);
+		message.style.display = "initial";
 	}
 };
 
 const createNewAccount = async (username: string, password: string) => {
 	message.innerText = await postNewAccount(username, password);
-	formContainer.appendChild(message);
 };
 
 //ACCOUNT LOGIN//
 
 const loginUser = async (username: string, password: string) => {
-	formContainer.removeChild(message);
-	const user = await getUserLogin(username, password);
-	switch (user.response_code) {
+	const statusCode = await getLoginResponseCode(username, password);
+	switch (statusCode) {
 		case 200:
-			displayUser(user);
+			window.location.replace("index.html");
 			break;
 		case 404:
 			message.innerText = "User not found.";
-			formContainer.appendChild(message);
+			message.style.display = "initial";
 			break;
 		case 400:
 			message.innerText = "Password is incorrect.";
-			formContainer.appendChild(message);
+			message.style.display = "initial";
 			break;
 		default:
 			message.innerText = "An error occured. Please try again.";
-			formContainer.appendChild(message);
+			message.style.display = "initial";
 			break;
 	}
 };

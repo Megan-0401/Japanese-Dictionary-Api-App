@@ -75,6 +75,8 @@ const handleDropDownOnChange = () => {
 		}
 	} else if (categoryId != "") {
 		displayWordsByCategory(Number(categoryId));
+	} else {
+		displayAllWords();
 	}
 };
 

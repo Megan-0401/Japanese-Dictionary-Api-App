@@ -2,14 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>JP Dictionary: Account</title>
 		<link href="https://fonts.googleapis.com/css?family=Afacad" rel="stylesheet" />
 	</head>
 	<body>
-		<script type="module" src="/src/utilities/accountUtilities.ts"></script>
-		<script type="module" src="/src/main.ts"></script>
-		<head>
+		<script type="module" src="./src/utilities/accountUtilities.ts"></script>
+		<script type="module" src="./src/main.ts"></script>
+		<header>
 			<nav>
 				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
 				<ul class="nav-links">
@@ -23,36 +24,33 @@
 					</a>
 				</ul>
 			</nav>
-		</head>
-		<main>
-			<section class="account-container">
-				<div class="account-container--btns">
-					<button id="loginFormBtn" class="btn btn--form btn--no-rounding">LOGIN</button>
-					<button id="signupFormBtn" class="btn btn--form btn--no-rounding">
-						SIGN-UP
-					</button>
+		</header>
+		<section class="account-container">
+			<div class="account-container--btns">
+				<button id="loginFormBtn" class="btn btn--form btn--no-rounding">LOGIN</button>
+				<button id="signupFormBtn" class="btn btn--form btn--no-rounding">SIGN-UP</button>
+			</div>
+			<div class="form-container">
+				<div class="form-container__input">
+					<label for="usernameInput">Username:</label>
+					<input
+						type="text"
+						id="usernameInput"
+						name="usernameInput"
+						class="form-container__input-bar"
+					/>
+					<label for="passwordInput">Password:</label>
+					<input
+						type="password"
+						id="passwordInput"
+						name="passwordInput"
+						class="form-container__input-bar"
+					/>
+					<button id="loginBtn" class="btn btn--form">LOG IN</button>
+					<button id="signupBtn" class="btn btn--form">SIGN-UP</button>
+					<p id="message"></p>
 				</div>
-				<div class="form-container">
-					<div class="form-container__input">
-						<label for="username">Username:</label>
-						<input
-							type="text"
-							id="usernameInput"
-							name="username"
-							class="form-container__input-bar"
-						/>
-						<label for="password">Password:</label>
-						<input
-							type="password"
-							id="passwordInput"
-							name="password"
-							class="form-container__input-bar"
-						/>
-						<button id="loginBtn" class="btn btn--form">LOG IN</button>
-						<button id="signupBtn" class="btn btn--form">SIGN-UP</button>
-					</div>
-				</div>
-			</section>
-		</main>
+			</div>
+		</section>
 	</body>
 </html>

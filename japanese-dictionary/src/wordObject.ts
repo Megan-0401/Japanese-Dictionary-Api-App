@@ -20,7 +20,6 @@ export type Categories = {
 export type User = {
 	id: number;
 	username: string;
-	response_code: number;
 };
 
 //RESPONSE//
