@@ -20,6 +20,11 @@ INSERT INTO sentences (jp_sentence, eng_sentence) VALUES
 ('面白い　雑誌　を　読んでいます。', "I'm reading an interesting magazine."),
 ('お母さん　と　日本語　が　話します。', 'I speak Japanese with my mum/mom.'),
 ('あの　本　を　貸して　ください。','Please lend me that book over there.'),
+('冷たい　飲み物　を　買いましょう。',"Let's buy some cold drinks."),
+('一人　で　音楽　を　聞きます。','I listen to music on my own.'),
+('公園　で　友達　と　遊びました。','I played in the park with my friends.'),
+('父　は　お酒　を　飲みません。','My dad does not drink alcohol.'),
+('海　で　泳ぎたいです。','I want to swim in the sea.'),
 ('jp','eng');
 
 -- adding words
@@ -49,6 +54,11 @@ INSERT INTO words (kanji, hiragana, katakana, romanji, class_id, sentence_id) VA
 ('読む', 'よむ', 'N/A', 'yomu', 5, 23),
 ('寝る', 'ねる', 'N/A', 'neru', 5, 19),
 ('貸す', 'かす', 'N/A', 'kasu', 5, 25),
+('買う', 'かう', 'N/A', 'kau', 5, 26),
+('聞く', 'きく', 'N/A', 'kiku', 5, 27),
+('遊ぶ', 'あそぶ', 'N/A', 'asobu', 5, 28),
+('飲む', 'のむ', 'N/A', 'nomu', 5, 29),
+('泳ぐ', 'およぐ', 'N/A', 'oyogu', 5, 30),
 ('kanji', 'hiragana', 'katakana', 'romanji', 0, 0);
 
 -- adding meanings
@@ -59,7 +69,8 @@ INSERT INTO meanings (english) VALUES
 ('famous'), ('this'), ('pen'), ('room'), ('Sunday'),
 ('lover'), ('boyfriend'), ('girlfriend'), ('university'), ('teacher'),
 ('magazine'), ('to speak'), ('to write'), ('to read'), ('to sleep'),
-('to lend'),
+('to lend'), ('to buy'), ('to listen'), ('to ask'), ('to play'),
+('to drink'), ('to swim'),
 ('meaning');
 
 -- connecting words to meanings
@@ -89,6 +100,11 @@ INSERT INTO word_meanings (word_id, meaning_id) VALUES
 (33, 41),
 (34, 42),
 (35, 43),
+(36, 44),
+(37, 45), (37, 46),
+(38, 47),
+(39, 48),
+(40, 49),
 (0, 0);
 
 -- connecting words to categories
@@ -118,4 +134,9 @@ INSERT INTO word_categories (word_id, category_id) VALUES
 (33, 11),
 (34, 26),
 (35, 26),
+(36, 19),
+(37, 26),
+(38, 26),
+(39, 10),
+(40, 21),
 (0, 0);

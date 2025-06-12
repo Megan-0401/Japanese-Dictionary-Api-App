@@ -57,8 +57,9 @@ password VARCHAR (50),
 PRIMARY KEY (id));
 
 CREATE TABLE bookmarks (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 word_id INT UNSIGNED NOT NULL,
 user_id INT UNSIGNED NOT NULL,
-PRIMARY KEY (word_id, user_id),
+PRIMARY KEY (id),
 FOREIGN KEY (word_id) REFERENCES words(id),
 FOREIGN KEY (user_id) REFERENCES users(id));
