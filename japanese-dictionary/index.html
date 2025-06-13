@@ -10,135 +10,164 @@
 	</head>
 	<body>
 		<script type="module" src="./src/main.ts"></script>
+		<script type="module" src="./src/utilities/accountUtilities.ts"></script>
 		<header>
 			<nav>
 				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
 				<ul class="nav-links">
-					<a href="index.html">
-						<button class="btn btn--nav" id="home">HOME</button>
-					</a>
+					<button class="btn btn--nav" id="home">HOME</button>
 					<button class="btn btn--nav" id="info">INFO</button>
 					<button class="btn btn--nav" id="bookmarks">BOOKMARKS</button>
-					<a href="account.html">
-						<button class="btn btn--nav" id="accounts">LOGIN/SIGN-UP</button>
-					</a>
+					<button class="btn btn--nav" id="accounts">LOGIN/SIGN-UP</button>
 				</ul>
 			</nav>
 		</header>
 		<div id="userAccount" data-user="0"></div>
-		<section id="lookUp">
-			<section id="search">
-				<div class="search-container">
-					<input
-						id="searchBar"
-						class="search-container__bar"
-						type="text"
-						placeholder="Search by word..."
-					/>
-					<button id="searchBtn" class="btn btn--search">
-						<i class="material-icons">search</i>
+		<div id="mainPage">
+			<section id="lookUp">
+				<section id="search">
+					<div class="search-container">
+						<input
+							id="searchBar"
+							class="search-container__bar"
+							type="text"
+							placeholder="Search by word..."
+						/>
+						<button id="searchBtn" class="btn btn--search">
+							<i class="material-icons">search</i>
+						</button>
+					</div>
+					<div id="resultInfo">results: 0</div>
+				</section>
+				<section id="filter">
+					<div class="title--primary title--teal">FILTER BY</div>
+					<form class="filter-container">
+						<div class="dropdown-container">
+							<div class="dropdown-container__label title--secondary title--teal">
+								Word class
+							</div>
+							<select
+								name="class"
+								id="wordClass"
+								class="dropdown-container__dropdown title--secondary"
+							>
+								<option value="">Select...</option>
+								<option value="noun">noun</option>
+							</select>
+						</div>
+						<div class="dropdown-container">
+							<div class="dropdown-container__label title--secondary title--teal">
+								Category
+							</div>
+							<select
+								name="category"
+								id="wordCategory"
+								class="dropdown-container__dropdown title--secondary"
+							>
+								<option value="">Select...</option>
+								<option value="animals">animals</option>
+							</select>
+						</div>
+						<input
+							id="clearFiltersBtn"
+							class="btn btn--search btn--clear"
+							type="reset"
+							value="CLEAR"
+						/>
+					</form>
+				</section>
+			</section>
+			<div id="results">
+				<section class="result-container">
+					<button class="btn btn--bookmark">
+						<i class="material-icons btn--bookmark-icon">add_box</i>
+					</button>
+					<div class="bookmark bookmark--hide">
+						<i class="material-icons bookmark--icon">bookmark</i>
+					</div>
+					<div class="word-container">
+						<p class="word-container__main-word">学生</p>
+						<div class="word-container__roma-meaning">
+							<div class="stacked-container">
+								<p class="hiragana">がくせい</p>
+								<p class="romanji romanji--small">gakusei</p>
+							</div>
+							<p class="word-container__meaning">student</p>
+						</div>
+						<div class="stacked-container">
+							<p class="sentence sentence--jp">
+								あなたは<span class="dark-teal-col">学生</span>ですか？
+							</p>
+							<p class="sentence sentence--eng">
+								Are you a <span class="light-orange-col">student</span>?
+							</p>
+						</div>
+						<div class="word-info-container">
+							<p class="word-info-container__text">
+								Word class: <span class="dark-col">noun</span>
+							</p>
+							<p class="word-info-container__text">
+								Category: <span class="dark-col">school</span>
+							</p>
+						</div>
+					</div>
+				</section>
+				<section class="result-container">
+					<button class="btn btn--bookmark">
+						<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
+					</button>
+					<div class="bookmark">
+						<i class="material-icons bookmark--icon">bookmark</i>
+					</div>
+					<div class="word-container">
+						<p class="word-container__main-word">HIRAGANA</p>
+						<div class="word-container__roma-meaning">
+							<p class="romanji romanji--big">ROMANJI</p>
+							<p class="word-container__meaning">MEANING</p>
+						</div>
+						<div class="stacked-container">
+							<p class="sentence sentence--jp">JP SENTENCE</p>
+							<p class="sentence sentence--eng">ENG SENTENCE</p>
+						</div>
+						<div class="word-info-container">
+							<p class="word-info-container__text">Word class:</p>
+							<p class="word-info-container__text">Category:</p>
+						</div>
+					</div>
+				</section>
+				<section class="result-container"></section>
+				<section class="result-container"></section>
+			</div>
+		</div>
+		<div id="accountSection">
+			<section class="account-container">
+				<div class="account-container--btns">
+					<button id="loginFormBtn" class="btn btn--form btn--no-rounding">LOGIN</button>
+					<button id="signupFormBtn" class="btn btn--form btn--no-rounding">
+						SIGN-UP
 					</button>
 				</div>
-				<div id="resultInfo">results: 0</div>
-			</section>
-			<section id="filter">
-				<div class="title--primary title--teal">FILTER BY</div>
-				<form class="filter-container">
-					<div class="dropdown-container">
-						<div class="dropdown-container__label title--secondary title--teal">
-							Word class
-						</div>
-						<select
-							name="class"
-							id="wordClass"
-							class="dropdown-container__dropdown title--secondary"
-						>
-							<option value="">Select...</option>
-							<option value="noun">noun</option>
-						</select>
-					</div>
-					<div class="dropdown-container">
-						<div class="dropdown-container__label title--secondary title--teal">
-							Category
-						</div>
-						<select
-							name="category"
-							id="wordCategory"
-							class="dropdown-container__dropdown title--secondary"
-						>
-							<option value="">Select...</option>
-							<option value="animals">animals</option>
-						</select>
-					</div>
-					<input
-						id="clearFiltersBtn"
-						class="btn btn--search btn--clear"
-						type="reset"
-						value="CLEAR"
-					/>
-				</form>
-			</section>
-		</section>
-		<div id="results">
-			<section class="result-container">
-				<button class="btn btn--bookmark">
-					<i class="material-icons btn--bookmark-icon">add_box</i>
-				</button>
-				<div class="bookmark bookmark--hide">
-					<i class="material-icons bookmark--icon">bookmark</i>
-				</div>
-				<div class="word-container">
-					<p class="word-container__main-word">学生</p>
-					<div class="word-container__roma-meaning">
-						<div class="stacked-container">
-							<p class="hiragana">がくせい</p>
-							<p class="romanji romanji--small">gakusei</p>
-						</div>
-						<p class="word-container__meaning">student</p>
-					</div>
-					<div class="stacked-container">
-						<p class="sentence sentence--jp">
-							あなたは<span class="dark-teal-col">学生</span>ですか？
-						</p>
-						<p class="sentence sentence--eng">
-							Are you a <span class="light-orange-col">student</span>?
-						</p>
-					</div>
-					<div class="word-info-container">
-						<p class="word-info-container__text">
-							Word class: <span class="dark-col">noun</span>
-						</p>
-						<p class="word-info-container__text">
-							Category: <span class="dark-col">school</span>
-						</p>
+				<div class="form-container">
+					<div class="form-container__input">
+						<label for="usernameInput">Username:</label>
+						<input
+							type="text"
+							id="usernameInput"
+							name="usernameInput"
+							class="form-container__input-bar"
+						/>
+						<label for="passwordInput">Password:</label>
+						<input
+							type="password"
+							id="passwordInput"
+							name="passwordInput"
+							class="form-container__input-bar"
+						/>
+						<button id="submitBtn" class="btn btn--form">LOG IN</button>
+						<p id="message"></p>
 					</div>
 				</div>
 			</section>
-			<section class="result-container">
-				<button class="btn btn--bookmark">
-					<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
-				</button>
-				<div class="bookmark">
-					<i class="material-icons bookmark--icon">bookmark</i>
-				</div>
-				<div class="word-container">
-					<p class="word-container__main-word">HIRAGANA</p>
-					<div class="word-container__roma-meaning">
-						<p class="romanji romanji--big">ROMANJI</p>
-						<p class="word-container__meaning">MEANING</p>
-					</div>
-					<div class="stacked-container">
-						<p class="sentence sentence--jp">JP SENTENCE</p>
-						<p class="sentence sentence--eng">ENG SENTENCE</p>
-					</div>
-					<div class="word-info-container">
-						<p class="word-info-container__text">Word class:</p>
-						<p class="word-info-container__text">Category:</p>
-					</div>
-				</div>
-			</section>
-			<section class="result-container"></section>
-			<section class="result-container"></section>
 		</div>
 	</body>
 </html>

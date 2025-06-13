@@ -15,9 +15,8 @@ const formContainer = document.querySelector<HTMLDivElement>(".form-container__i
 const usernameInput = document.querySelector<HTMLInputElement>("#usernameInput");
 const passwordInput = document.querySelector<HTMLInputElement>("#passwordInput");
 
-//SUBMIT BUTTONS//
-const loginBtn = document.querySelector<HTMLButtonElement>("#loginBtn");
-const signupBtn = document.querySelector<HTMLButtonElement>("#signupBtn");
+//SUBMIT BUTTON//
+const submitBtn = document.querySelector<HTMLButtonElement>("#submitBtn");
 
 //MESSAGE//
 const message = document.querySelector<HTMLParagraphElement>("#message");
@@ -28,8 +27,7 @@ if (
 	!formContainer ||
 	!usernameInput ||
 	!passwordInput ||
-	!loginBtn ||
-	!signupBtn ||
+	!submitBtn ||
 	!message
 ) {
 	throw new Error("Some elements could not be found.");
@@ -39,39 +37,32 @@ if (
 
 //EVENT HANDLERS//
 const handleLoginFormBtnOnClick = () => {
-	loginBtn.style.display = "initial";
-	signupBtn.style.display = "none";
+	submitBtn.innerText = "LOG IN";
 	message.style.display = "none";
 };
 
 const handleSingupFormBtnOnClick = () => {
-	loginBtn.style.display = "none";
-	signupBtn.style.display = "initial";
+	submitBtn.innerText = "SIGN UP";
 	message.style.display = "none";
 };
 
-const handleSignUpBtnOnClick = () => {
+const handleSubmitBtnOnClick = () => {
 	const username = usernameInput.value;
 	const password = passwordInput.value;
 	message.style.display = "none";
-	validatePassword(username, password);
-};
-
-const handleLoginBtnOnClick = () => {
-	const username = usernameInput.value;
-	const password = passwordInput.value;
-	message.style.display = "none";
-	loginUser(username, password);
+	if (submitBtn.innerText === "LOG IN") {
+		loginUser(username, password);
+	} else {
+		validatePassword(username, password);
+	}
 };
 
 //EVENT LISTENERS//
 loginFormBtn.addEventListener("click", handleLoginFormBtnOnClick);
 signupFormBtn.addEventListener("click", handleSingupFormBtnOnClick);
-signupBtn.addEventListener("click", handleSignUpBtnOnClick);
-loginBtn.addEventListener("click", handleLoginBtnOnClick);
+submitBtn.addEventListener("click", handleSubmitBtnOnClick);
 
 //ACCOUNT CREATION//
-
 const validatePassword = (username: string, password: string) => {
 	if (password.length >= 8) {
 		createNewAccount(username, password);
@@ -86,7 +77,6 @@ const createNewAccount = async (username: string, password: string) => {
 };
 
 //ACCOUNT LOGIN//
-
 const loginUser = async (username: string, password: string) => {
 	const statusCode = await getLoginResponseCode(username, password);
 	switch (statusCode) {

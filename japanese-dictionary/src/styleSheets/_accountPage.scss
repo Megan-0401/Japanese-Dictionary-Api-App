@@ -2,9 +2,8 @@
 @use "./typography";
 @use "./buttons";
 
-legend {
-	font-size: typography.$lg-form-title-size;
-	color: palette.$dark-text;
+#accountSection {
+	display: none;
 }
 
 label {
@@ -42,12 +41,6 @@ label {
 	}
 }
 
-#loginBtn {
-	display: initial;
-}
-#signupBtn {
-	display: none;
-}
 #message {
 	display: none;
 }

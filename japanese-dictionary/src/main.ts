@@ -39,6 +39,10 @@ const clearFilterBtn = document.querySelector<HTMLButtonElement>("#clearFiltersB
 //RESULTS ELEMENTS//
 const resultContainer = document.querySelector<HTMLDivElement>("#results");
 
+//PAGE SECTION ELEMENTS//
+const mainPage = document.querySelector<HTMLDivElement>("#mainPage");
+const accountSection = document.querySelector<HTMLDivElement>("#accountSection");
+
 if (
 	!homeBtn ||
 	!infoBtn ||
@@ -51,7 +55,9 @@ if (
 	!wordClassDropDown ||
 	!categoryDropDown ||
 	!clearFilterBtn ||
-	!resultContainer
+	!resultContainer ||
+	!mainPage ||
+	!accountSection
 ) {
 	throw new Error("Some elements could not be found.");
 }
@@ -89,11 +95,24 @@ const handleSearchBtnOnClick = () => {
 	}
 };
 
+const handleAccountBtnOnClick = () => {
+	accountSection.style.display = "initial";
+	mainPage.style.display = "none";
+};
+
+const handleHomeBtnOnClick = () => {
+	mainPage.style.display = "initial";
+	accountSection.style.display = "none";
+	configurePage();
+};
+
 //EVENT HANDLERS//
 clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
 wordClassDropDown.addEventListener("change", handleDropDownOnChange);
 categoryDropDown.addEventListener("change", handleDropDownOnChange);
 searchBtn.addEventListener("click", handleSearchBtnOnClick);
+accountBtn.addEventListener("click", handleAccountBtnOnClick);
+homeBtn.addEventListener("click", handleHomeBtnOnClick);
 
 //DISPLAYING WORDS ONTO PAGE//
 const displayAllWords = async () => {
