@@ -97,9 +97,13 @@ const handleSearchBtnOnClick = () => {
 };
 
 const handleAccountBtnOnClick = () => {
-	accountSection.style.display = "initial";
-	mainPage.style.display = "none";
-	clearInputFields();
+	if (accountBtn.innerText === "SIGN OUT") {
+		window.location.replace("index.html");
+	} else {
+		accountSection.style.display = "initial";
+		mainPage.style.display = "none";
+		clearInputFields();
+	}
 };
 
 const handleHomeBtnOnClick = () => {
@@ -169,9 +173,11 @@ const displayCategoryFilters = (htmlString: string) => {
 	categoryDropDown.innerHTML = htmlString;
 };
 
+//USER DISPLAY//
 export const displayUser = (user: User) => {
 	userInfo.innerText = `Hello, ${user.username}!`;
 	userInfo.setAttribute("data-user", user.id.toString());
+	accountBtn.innerText = "SIGN OUT";
 };
 
 //CONFIGURING PAGE//
