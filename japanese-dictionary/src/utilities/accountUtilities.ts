@@ -8,9 +8,6 @@ import { getLoginResponseCode } from "./fetchAPI";
 const loginFormBtn = document.querySelector<HTMLButtonElement>("#loginFormBtn");
 const signupFormBtn = document.querySelector<HTMLButtonElement>("#signupFormBtn");
 
-//FORM//
-const formContainer = document.querySelector<HTMLDivElement>(".form-container__input");
-
 //FORM INPUTS//
 const usernameInput = document.querySelector<HTMLInputElement>("#usernameInput");
 const passwordInput = document.querySelector<HTMLInputElement>("#passwordInput");
@@ -21,15 +18,7 @@ const submitBtn = document.querySelector<HTMLButtonElement>("#submitBtn");
 //MESSAGE//
 const message = document.querySelector<HTMLParagraphElement>("#message");
 
-if (
-	!loginFormBtn ||
-	!signupFormBtn ||
-	!formContainer ||
-	!usernameInput ||
-	!passwordInput ||
-	!submitBtn ||
-	!message
-) {
+if (!loginFormBtn || !signupFormBtn || !usernameInput || !passwordInput || !submitBtn || !message) {
 	throw new Error("Some elements could not be found.");
 }
 
@@ -74,26 +63,31 @@ const validatePassword = (username: string, password: string) => {
 
 const createNewAccount = async (username: string, password: string) => {
 	message.innerText = await postNewAccount(username, password);
+	message.style.display = "initial";
 };
 
 //ACCOUNT LOGIN//
 const loginUser = async (username: string, password: string) => {
 	const statusCode = await getLoginResponseCode(username, password);
+	message.style.display = "initial";
 	switch (statusCode) {
 		case 200:
-			window.location.replace("index.html");
+			message.innerText = "Logged in successfully!";
 			break;
 		case 404:
 			message.innerText = "User not found.";
-			message.style.display = "initial";
 			break;
 		case 400:
 			message.innerText = "Password is incorrect.";
-			message.style.display = "initial";
 			break;
 		default:
 			message.innerText = "An error occured. Please try again.";
-			message.style.display = "initial";
 			break;
 	}
+};
+
+//CLEARING INPUTS
+export const clearInputFields = () => {
+	usernameInput.value = "";
+	passwordInput.value = "";
 };

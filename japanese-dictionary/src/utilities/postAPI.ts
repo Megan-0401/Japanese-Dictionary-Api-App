@@ -8,7 +8,7 @@ export const postNewAccount = async (username: string, password: string): Promis
 		case 400:
 			return "Username already in use.";
 		case 200:
-			return "Account created successfully. Please login.";
+			return "Account created successfully! Please login.";
 		default:
 			return "An error occured. Please try again.";
 	}

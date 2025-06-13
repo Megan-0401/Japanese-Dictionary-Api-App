@@ -14,6 +14,7 @@ import {
 	createClassFilterHtmlString,
 	createCategoryFilterHtmlString,
 } from "./utilities/htmlFormatter";
+import { clearInputFields } from "./utilities/accountUtilities";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -98,6 +99,7 @@ const handleSearchBtnOnClick = () => {
 const handleAccountBtnOnClick = () => {
 	accountSection.style.display = "initial";
 	mainPage.style.display = "none";
+	clearInputFields();
 };
 
 const handleHomeBtnOnClick = () => {
@@ -168,7 +170,7 @@ const displayCategoryFilters = (htmlString: string) => {
 };
 
 export const displayUser = (user: User) => {
-	userInfo.innerText = "Hello, " + user.username;
+	userInfo.innerText = `Hello, ${user.username}!`;
 	userInfo.setAttribute("data-user", user.id.toString());
 };
 

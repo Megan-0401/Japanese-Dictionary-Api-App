@@ -1,4 +1,5 @@
-import type { WordResponse, Word, Meanings, Categories, WordClass } from "../wordObject";
+import type { WordResponse, Word, Meanings, Categories, User, WordClass } from "../wordObject";
+import { displayUser } from "../main";
 
 //GET ALL WORDS//
 export const getAllWords = async () => {
@@ -52,6 +53,11 @@ export const getAllCategories = async () => {
 //LOGIN USER//
 export const getLoginResponseCode = async (username: string, password: string) => {
 	const response = await fetch(`http://localhost:8080/api/users/login/${username},${password}`);
+
+	if (response.status === 200) {
+		const data: User = await response.json();
+		displayUser(data);
+	}
 	return response.status;
 };
 
