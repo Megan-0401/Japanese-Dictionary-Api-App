@@ -56,6 +56,16 @@ All words can be shown again by simply returning to the Home Page.
 
 Allows a user to either log-in with a pre-existing account or sign up with new credentials. The account is solely used to track bookmarks.
 
+#### LOGIN
+
+Checks if the user exists, and if the password is correct before logging the user in. The 'LOGIN/SIGN-UP' button in the top right of the navigation bar will change to 'SIGN OUT'. If clicked, the page is refreshed and the user is signed out.
+
+**NOTE: The account function uses a psuedo-login system. If the page is closed or refreshed while logged in, the user will be logged out and will have to sign in again.**
+
+#### SIGN UP
+
+Checks if the password is an appropriate length (>=8 characters). Prompts the user to log in if details are successfully posted to the database.
+
 ---
 
 ## Back-end: API
@@ -96,3 +106,21 @@ Returns all word classes.
     GET api/categories
 
 Returns all categories.
+
+---
+
+### Account Endpoints
+
+    POST api/users/signup/{username},{password}
+
+Checks if the username already exists in the database, and returns a 400 (bad request) status if true.
+
+Otherwise, encrypts the password and inserts new user into the database. Returns a 200 (OK) status and the new user (id and username only).
+
+    GET api/users/login/{username},{password}
+
+Checks if the username exists in the database, and returns a 404 (not found) status if false.
+
+Otherwise, checks the given password with the password in the database, and returns a 400 (bad request) status if they do not match.
+
+Otherwise, returns a 200 (OK) status and the user (id and username only).
