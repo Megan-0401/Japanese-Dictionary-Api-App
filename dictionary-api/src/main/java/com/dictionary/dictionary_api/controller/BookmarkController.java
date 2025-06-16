@@ -1,10 +1,11 @@
 package com.dictionary.dictionary_api.controller;
 
 import com.dictionary.dictionary_api.model.Bookmark;
+import com.dictionary.dictionary_api.model.Word;
 import com.dictionary.dictionary_api.service.BookmarkService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +20,21 @@ public class BookmarkController {
 
     //METHODS//
 
-    @GetMapping
-    public List<Bookmark> getAllBookmarks () {
-        return bookmarkService.getAllBookmarks();
+    @GetMapping("/{user_id}")
+    public List<Word> getAllUserBookmarks (@PathVariable Integer user_id) {
+        return bookmarkService.getAllUserBookmarks(user_id);
+    }
+
+    @PostMapping("/add/{user_id},{word_id}")
+    public ResponseEntity<Bookmark> createBookmark (@PathVariable Integer user_id,
+                                                    @PathVariable Integer word_id){
+        return new ResponseEntity<>(bookmarkService.createBookmark(user_id, word_id), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/remove/{user_id},{word_id}")
+    public ResponseEntity<Bookmark> deleteBookmark (@PathVariable Integer user_id,
+                                          @PathVariable Integer word_id){
+        Bookmark bookmark = bookmarkService.deleteBookmark(user_id, word_id);
+        return new ResponseEntity<>(bookmark, HttpStatus.OK);
     }
 }

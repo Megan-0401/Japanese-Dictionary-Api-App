@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "bookmarks")
 public class Bookmark {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
@@ -26,5 +27,13 @@ public class Bookmark {
 
     public User getUser() {
         return user;
+    }
+
+    public void setWord(Word word) {
+        this.word = word;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

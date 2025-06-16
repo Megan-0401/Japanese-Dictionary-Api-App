@@ -30,3 +30,15 @@ SELECT words.* FROM words
 WHERE words.kanji LIKE "%寿司%"
 OR words.hiragana LIKE "%寿司%"
 OR words.katakana LIKE "%寿司%";
+
+-- GET BOOKMARKED WORDS BY USER
+SELECT words.* FROM words, users, bookmarks
+WHERE bookmarks.word_id = words.id
+AND bookmarks.user_id = users.id
+AND users.id = 1;
+
+-- CREATE BOOKMARK
+INSERT INTO bookmarks (user_id, word_id) VALUES (1,3);
+
+-- DELETE BOOKMARK
+DELETE FROM bookmarks WHERE user_id = 1 AND word_id = 1;

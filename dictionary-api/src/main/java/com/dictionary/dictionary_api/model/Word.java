@@ -1,5 +1,6 @@
 package com.dictionary.dictionary_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class Word {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     List<Category> categories = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "word")
+    private List<Bookmark> bookmarks;
 
     public Integer getId() {
         return id;
