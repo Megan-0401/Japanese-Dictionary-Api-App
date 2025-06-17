@@ -17,6 +17,7 @@ import {
 } from "./utilities/htmlFormatter";
 import { clearInputFields } from "./utilities/accountUtilities";
 import { recaptureBtns } from "./utilities/bookmarkUtilities";
+import { insertInfoPageElements } from "./utilities/infoPageFormatter";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -45,6 +46,7 @@ const resultContainer = document.querySelector<HTMLDivElement>("#results");
 //PAGE SECTION ELEMENTS//
 const mainPage = document.querySelector<HTMLDivElement>("#mainPage");
 const accountSection = document.querySelector<HTMLDivElement>("#accountSection");
+const infoSection = document.querySelector<HTMLDivElement>("#infoSection");
 
 if (
 	!homeBtn ||
@@ -60,7 +62,8 @@ if (
 	!clearFilterBtn ||
 	!resultContainer ||
 	!mainPage ||
-	!accountSection
+	!accountSection ||
+	!infoSection
 ) {
 	throw new Error("Some elements could not be found.");
 }
@@ -107,6 +110,7 @@ const handleAccountBtnOnClick = () => {
 	} else {
 		accountSection.style.display = "initial";
 		mainPage.style.display = "none";
+		infoSection.innerHTML = "";
 		clearInputFields();
 	}
 };
@@ -126,6 +130,12 @@ const handleBookmarkBtnOnClick = () => {
 	}
 };
 
+const handleInfoButtonOnClick = () => {
+	insertInfoPageElements(infoSection);
+	mainPage.style.display = "none";
+	accountSection.style.display = "none";
+};
+
 //EVENT HANDLERS//
 clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
 wordClassDropDown.addEventListener("change", handleDropDownOnChange);
@@ -134,6 +144,7 @@ searchBtn.addEventListener("click", handleSearchBtnOnClick);
 accountBtn.addEventListener("click", handleAccountBtnOnClick);
 homeBtn.addEventListener("click", handleHomeBtnOnClick);
 listBookmarksBtn.addEventListener("click", handleBookmarkBtnOnClick);
+infoBtn.addEventListener("click", handleInfoButtonOnClick);
 
 //CHECKING FOR BOOKMARKED WORDS//
 const sortBookmarkedWords = (wordList: Word[]): BookmarkedWord[] => {
@@ -237,6 +248,7 @@ const configurePage = () => {
 	displayAllWords();
 	getClassFilterOptions();
 	getCategoryFilterOptions();
+	infoSection.innerHTML = "";
 };
 
 configurePage();
