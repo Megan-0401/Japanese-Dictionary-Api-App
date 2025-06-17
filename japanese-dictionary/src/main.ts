@@ -180,6 +180,11 @@ export const displayUser = (user: User) => {
 	accountBtn.innerText = "SIGN OUT";
 };
 
+//GETTING USER ID//
+export const getUserId = (): number => {
+	return Number(userInfo.getAttribute("data-user"));
+};
+
 //CONFIGURING PAGE//
 const configurePage = () => {
 	displayAllWords();

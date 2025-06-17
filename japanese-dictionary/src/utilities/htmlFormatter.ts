@@ -1,11 +1,11 @@
 import type { Word, WordClass, Categories } from "../wordObject";
 
 const getKanjiResultContainerHTML = (word: Word): string => {
-	return `<section value="${word.id}" class="result-container">
-					<button class="btn btn--bookmark">
+	return `<section class="result-container" data-word-id="${word.id}">
+					<button class="btn btn--bookmark" data-bookmark-type="add" data-bookmark-id="0">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
-					<div class="bookmark bookmark--hide">
+					<div class="bookmark">
 						<i class="material-icons bookmark--icon">bookmark</i>
 					</div>
 					<div class="word-container">
@@ -42,11 +42,11 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 	} else {
 		mainWord = word.hiragana;
 	}
-	return `<section value="${word.id}" class="result-container">
-					<button class="btn btn--bookmark">
+	return `<section class="result-container" data-word-id="${word.id}">
+					<button class="btn btn--bookmark" data-bookmark-type="add" data-bookmark-id="0">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
-					<div class="bookmark bookmark--hide">
+					<div class="bookmark">
 						<i class="material-icons bookmark--icon">bookmark</i>
 					</div>
 					<div class="word-container">

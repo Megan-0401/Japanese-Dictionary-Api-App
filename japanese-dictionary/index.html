@@ -11,6 +11,7 @@
 	<body>
 		<script type="module" src="./src/main.ts"></script>
 		<script type="module" src="./src/utilities/accountUtilities.ts"></script>
+		<script type="module" src="./src/utilities/bookmarkUtilities.ts"></script>
 		<header>
 			<nav>
 				<div class="title--primary title--logo">EASY JP DICTIONARY</div>
@@ -78,13 +79,10 @@
 				</section>
 			</section>
 			<div id="results">
-				<section class="result-container">
-					<button class="btn btn--bookmark">
+				<section class="result-container" data-word-id="0">
+					<button class="btn btn--bookmark" data-bookmark-type="add">
 						<i class="material-icons btn--bookmark-icon">add_box</i>
 					</button>
-					<div class="bookmark bookmark--hide">
-						<i class="material-icons bookmark--icon">bookmark</i>
-					</div>
 					<div class="word-container">
 						<p class="word-container__main-word">学生</p>
 						<div class="word-container__roma-meaning">
@@ -112,8 +110,8 @@
 						</div>
 					</div>
 				</section>
-				<section class="result-container">
-					<button class="btn btn--bookmark">
+				<section class="result-container" data-word-id="0">
+					<button class="btn btn--bookmark" data-bookmark-type="remove">
 						<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
 					</button>
 					<div class="bookmark">
