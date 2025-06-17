@@ -36,6 +36,12 @@ Both filters can be cleared with the 'CLEAR' button on the right of the filters,
 
 **NOTE: It is not possible to use the search and filter function together. Using one will override the other.**
 
+#### BOOKMARK
+
+If a user is logged in, bookmarked words will appear with an orange icon beside them. Bookmarked words will be shown even when searching and filtering.
+
+Words can be added or removed from a user's bookmarks by the green + or - button respectively.
+
 ---
 
 ### INFO
@@ -124,3 +130,19 @@ Checks if the username exists in the database, and returns a 404 (not found) sta
 Otherwise, checks the given password with the password in the database, and returns a 400 (bad request) status if they do not match.
 
 Otherwise, returns a 200 (OK) status and the user (id and username only).
+
+---
+
+### Bookmark Endpoints
+
+    GET api/bookmarks/{user_id}
+
+Returns all words that are bookmarked by a user.
+
+    POST api/bookmarks/add/{user_id},{word_id}
+
+Inserts a new bookmark containing the user id and word id into the database. Returns the new bookmark and a 201 (created) status.
+
+    DELETE api/bookmarks/remove/{user_id},{word_id}
+
+Deletes a bookmark that matches the user id and word id. Returns the deleted bookmark and a 200 (OK) status.
