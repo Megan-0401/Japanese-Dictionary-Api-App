@@ -36,6 +36,13 @@ export const getWordByFilters = async (classId: number, categoryId: number) => {
 	return reformatWordData(data);
 };
 
+//GET BOOKMARKED WORDS//
+export const getBookmarkedWords = async (userId: number) => {
+	const response = await fetch(`http://localhost:8080/api/bookmarks/${userId}`);
+	const data: WordResponse[] = await response.json();
+	return reformatWordData(data);
+};
+
 //GET ALL WORD CLASSES//
 export const getAllClasses = async () => {
 	const response = await fetch("http://localhost:8080/api/wordclass");

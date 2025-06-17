@@ -1,7 +1,6 @@
-import { getUserId } from "../main";
+import { getUserId, getUserBookmarks } from "../main";
 
 //CAPTURING DOM ELEMENTS//
-
 const bookmarkBtns = document.querySelectorAll<HTMLButtonElement>(".btn--bookmark");
 const bookmarkIcons = document.querySelectorAll<HTMLDivElement>(".bookmark");
 
@@ -32,15 +31,22 @@ const createBookmarkIconElement = (): HTMLDivElement => {
 };
 
 const addBookmark = (btn: HTMLButtonElement) => {
-	//SWAP BUTTON//
-	btn.innerHTML = `<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>`;
-	btn.setAttribute("data-bookmark-type", "remove");
-	//POST BOOKMARK TO DATABASE//
-	const wordId = btn.parentElement?.getAttribute("data-word-id");
-	postBookmark(Number(wordId), getUserId());
-	//ADD BOOKMARK ICON//
-	const bookmarkIcon = createBookmarkIconElement;
-	btn.after(bookmarkIcon());
+	//CHECK IF USER SIGNED IN//
+	const userId = getUserId();
+	if (userId === 0) {
+		alert("Please login or create an account to create bookmarks.");
+	} else {
+		//SWAP BUTTON//
+		btn.innerHTML = `<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>`;
+		btn.setAttribute("data-bookmark-type", "remove");
+		//POST BOOKMARK TO DATABASE//
+		const wordId = btn.parentElement?.getAttribute("data-word-id");
+		postBookmark(Number(wordId), userId);
+		getUserBookmarks();
+		//ADD BOOKMARK ICON//
+		const bookmarkIcon = createBookmarkIconElement;
+		btn.after(bookmarkIcon());
+	}
 };
 
 const removeBookmark = (btn: HTMLButtonElement) => {
@@ -50,6 +56,7 @@ const removeBookmark = (btn: HTMLButtonElement) => {
 	//DELETE BOOKMARK FROM DATABASE//
 	const wordId = btn.parentElement?.getAttribute("data-word-id");
 	deleteBookmark(Number(wordId), getUserId());
+	getUserBookmarks();
 	//REMOVE BOOKMARK ICON//
 	const bookmarkIcon = btn.nextSibling;
 	if (bookmarkIcon) {
@@ -58,9 +65,9 @@ const removeBookmark = (btn: HTMLButtonElement) => {
 };
 
 const postBookmark = async (wordId: number, userId: number) => {
-	console.log("add bookmark");
+	console.log(wordId, userId);
 };
 
 const deleteBookmark = async (wordId: number, userId: number) => {
-	console.log("remove bookmark");
+	console.log(wordId, userId);
 };

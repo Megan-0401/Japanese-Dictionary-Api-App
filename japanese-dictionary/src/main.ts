@@ -1,5 +1,5 @@
 import "./style.scss";
-import type { Word, User } from "./wordObject";
+import type { Word, User, BookmarkedWord } from "./wordObject";
 import {
 	getAllWords,
 	getAllClasses,
@@ -8,6 +8,7 @@ import {
 	getWordByClass,
 	getWordByCategory,
 	getWordByFilters,
+	getBookmarkedWords,
 } from "./utilities/fetchAPI";
 import {
 	createHTMLString,
@@ -63,6 +64,9 @@ if (
 	throw new Error("Some elements could not be found.");
 }
 
+//GLOBAL//
+let bookmarkedWordsList: Word[] = [];
+
 //METHODS//
 
 //EVENT METHODS//
@@ -112,6 +116,15 @@ const handleHomeBtnOnClick = () => {
 	configurePage();
 };
 
+const handleBookmarkBtnOnClick = () => {
+	const userId = getUserId();
+	if (userId === 0) {
+		alert("Please login or create an account to view bookmarks.");
+	} else {
+		displayBookmarkedWords(userId);
+	}
+};
+
 //EVENT HANDLERS//
 clearFilterBtn.addEventListener("click", handleFilterClearBtnOnClick);
 wordClassDropDown.addEventListener("change", handleDropDownOnChange);
@@ -119,6 +132,25 @@ categoryDropDown.addEventListener("change", handleDropDownOnChange);
 searchBtn.addEventListener("click", handleSearchBtnOnClick);
 accountBtn.addEventListener("click", handleAccountBtnOnClick);
 homeBtn.addEventListener("click", handleHomeBtnOnClick);
+listBookmarksBtn.addEventListener("click", handleBookmarkBtnOnClick);
+
+//CHECKING FOR BOOKMARKED WORDS//
+const sortBookmarkedWords = (wordList: Word[]): BookmarkedWord[] => {
+	const bookmarkList: BookmarkedWord[] = [];
+	for (const word of wordList) {
+		let isWordBookmarked = false;
+		//CHECKING IF BOOKMARK LIST IS EMPTY//
+		if (bookmarkedWordsList.length != 0) {
+			for (const bookmark of bookmarkedWordsList) {
+				if (word.id === bookmark.id) {
+					isWordBookmarked = true;
+				}
+			}
+		}
+		bookmarkList.push({ ...word, isBookmarked: isWordBookmarked });
+	}
+	return bookmarkList;
+};
 
 //DISPLAYING WORDS ONTO PAGE//
 const displayAllWords = async () => {
@@ -146,6 +178,11 @@ const displayWordsByClassAndCategory = async (classId: number, categoryId: numbe
 	displayResult(wordList);
 };
 
+const displayBookmarkedWords = async (userId: number) => {
+	const wordList = await getBookmarkedWords(userId);
+	displayResult(wordList);
+};
+
 //GETTING FILTER VALUES//
 const getClassFilterOptions = async () => {
 	const classList = await getAllClasses();
@@ -159,9 +196,14 @@ const getCategoryFilterOptions = async () => {
 	displayCategoryFilters(htmlString);
 };
 
+//GETTING USER BOOKMARKS//
+export const getUserBookmarks = async () => {
+	bookmarkedWordsList = await getBookmarkedWords(getUserId());
+};
+
 //INSERTING HTML//
-const displayResult = (wordList: Word[]) => {
-	const htmlString = createHTMLString(wordList);
+export const displayResult = (wordList: Word[]) => {
+	const htmlString = createHTMLString(sortBookmarkedWords(wordList));
 	resultContainer.innerHTML = htmlString;
 };
 
@@ -178,6 +220,7 @@ export const displayUser = (user: User) => {
 	userInfo.innerText = `Hello, ${user.username}!`;
 	userInfo.setAttribute("data-user", user.id.toString());
 	accountBtn.innerText = "SIGN OUT";
+	getUserBookmarks();
 };
 
 //GETTING USER ID//

@@ -47,3 +47,5 @@ export type Word = {
 	meanings: string;
 	categories: string;
 };
+
+export type BookmarkedWord = Word & { isBookmarked: boolean };

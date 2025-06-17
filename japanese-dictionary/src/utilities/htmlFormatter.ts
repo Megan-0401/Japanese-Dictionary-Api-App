@@ -1,14 +1,24 @@
-import type { Word, WordClass, Categories } from "../wordObject";
+import type { Word, BookmarkedWord, WordClass, Categories } from "../wordObject";
 
-const getKanjiResultContainerHTML = (word: Word): string => {
-	return `<section class="result-container" data-word-id="${word.id}">
-					<button class="btn btn--bookmark" data-bookmark-type="add" data-bookmark-id="0">
-						<i class="material-icons btn--bookmark-icon">add_box</i>
+const getBookmarkedWordHtml = (wordId: number): string => {
+	return `<section class="result-container" data-word-id="${wordId}">
+					<button class="btn btn--bookmark" data-bookmark-type="remove">
+						<i class="material-icons btn--bookmark-icon">indeterminate_check_box</i>
 					</button>
 					<div class="bookmark">
 						<i class="material-icons bookmark--icon">bookmark</i>
-					</div>
-					<div class="word-container">
+					</div>`;
+};
+
+const getNonBookmarkedWordHtml = (wordId: number): string => {
+	return `<section class="result-container" data-word-id="${wordId}">
+					<button class="btn btn--bookmark" data-bookmark-type="add">
+						<i class="material-icons btn--bookmark-icon">add_box</i>
+					</button>`;
+};
+
+const getKanjiResultContainerHTML = (word: Word): string => {
+	return `<div class="word-container">
 						<p class="word-container__main-word">${word.kanji}</p>
 						<div class="word-container__roma-meaning">
 							<div class="stacked-container">
@@ -42,14 +52,7 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 	} else {
 		mainWord = word.hiragana;
 	}
-	return `<section class="result-container" data-word-id="${word.id}">
-					<button class="btn btn--bookmark" data-bookmark-type="add" data-bookmark-id="0">
-						<i class="material-icons btn--bookmark-icon">add_box</i>
-					</button>
-					<div class="bookmark">
-						<i class="material-icons bookmark--icon">bookmark</i>
-					</div>
-					<div class="word-container">
+	return `<div class="word-container">
 						<p class="word-container__main-word">${mainWord}</p>
 						<div class="word-container__roma-meaning">
 							<p class="romanji romanji--big">${word.romanji}</p>
@@ -101,14 +104,21 @@ const createSpanHtmlForEngSentence = (meanings: string, sentence: string): strin
 	return sentenceLowerCase.replace(wordInSentence, spanHtml);
 };
 
-export const createHTMLString = (words: Word[]): string => {
+export const createHTMLString = (words: BookmarkedWord[]): string => {
 	let concattedString = "";
 	for (const word of words) {
 		let string = "";
-		if (word.kanji === "N/A") {
-			string = getNonKanjiResultContainerHTML(word);
+		//GETTING BOOKMARK HTML//
+		if (word.isBookmarked) {
+			string = getBookmarkedWordHtml(word.id);
 		} else {
-			string = getKanjiResultContainerHTML(word);
+			string = getNonBookmarkedWordHtml(word.id);
+		}
+		//GETTING WORD CONTAINER HTML//
+		if (word.kanji === "N/A") {
+			string += getNonKanjiResultContainerHTML(word);
+		} else {
+			string += getKanjiResultContainerHTML(word);
 		}
 		concattedString += string;
 	}
