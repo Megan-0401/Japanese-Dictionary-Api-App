@@ -22,9 +22,11 @@ INSERT INTO sentences (jp_sentence, eng_sentence) VALUES
 ('あの　本　を　貸して　ください。','Please lend me that book over there.'),
 ('冷たい　飲み物　を　買いましょう。',"Let's buy some cold drinks."),
 ('一人　で　音楽　を　聞きます。','I listen to music on my own.'),
-('公園　で　友達　と　遊びました。','I played in the park with my friends.'),
+('公園　で　友達　と　遊びました。','I played in the park with my friend.'),
 ('父　は　お酒　を　飲みません。','My dad does not drink alcohol.'),
 ('海　で　泳ぎたいです。','I want to swim in the sea.'),
+('それ　は　軽くて　便利な　辞書　です。','That is a light and convenient dictionary.'),
+('あれ　は　見えますか？','Can you see that over there?'),
 ('jp','eng');
 
 -- adding words
@@ -59,6 +61,12 @@ INSERT INTO words (kanji, hiragana, katakana, romanji, class_id, sentence_id) VA
 ('遊ぶ', 'あそぶ', 'N/A', 'asobu', 5, 28),
 ('飲む', 'のむ', 'N/A', 'nomu', 5, 29),
 ('泳ぐ', 'およぐ', 'N/A', 'oyogu', 5, 30),
+('N/A', 'それ', 'N/A', 'sore', 1, 31),
+('本', 'ほん', 'N/A', 'hon', 2, 25),
+('N/A', 'hiragana', 'N/A', 'are', 1, 32),
+('日本語', 'にほんご', 'N/A', 'nihongo', 2, 24),
+('辞書', 'じしょ', 'N/A', 'jisho', 2, 31),
+('友達', 'ともだち', 'N/A', 'tomodachi', 2, 28),
 ('kanji', 'hiragana', 'katakana', 'romanji', 0, 0);
 
 -- adding meanings
@@ -70,7 +78,8 @@ INSERT INTO meanings (english) VALUES
 ('lover'), ('boyfriend'), ('girlfriend'), ('university'), ('teacher'),
 ('magazine'), ('to speak'), ('to write'), ('to read'), ('to sleep'),
 ('to lend'), ('to buy'), ('to listen'), ('to ask'), ('to play'),
-('to drink'), ('to swim'),
+('to drink'), ('to swim'), ('that'), ('book'), ('Japanese'),
+('dictionary'), ('friend'),
 ('meaning');
 
 -- connecting words to meanings
@@ -105,6 +114,12 @@ INSERT INTO word_meanings (word_id, meaning_id) VALUES
 (38, 47),
 (39, 48),
 (40, 49),
+(41, 50),
+(42, 51),
+(43, 50),
+(44, 52),
+(45, 53),
+(46, 54),
 (0, 0);
 
 -- connecting words to categories
@@ -139,4 +154,10 @@ INSERT INTO word_categories (word_id, category_id) VALUES
 (38, 26),
 (39, 10),
 (40, 21),
+(41, 26),
+(42, 11),
+(43, 26),
+(44, 3),
+(45, 11),
+(46, 17),
 (0, 0);
