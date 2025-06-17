@@ -1,10 +1,10 @@
 import { getUserId, getUserBookmarks } from "../main";
+import { postNewBookmark, deleteBookmark } from "./post&deleteAPI";
 
 //CAPTURING DOM ELEMENTS//
-const bookmarkBtns = document.querySelectorAll<HTMLButtonElement>(".btn--bookmark");
-const bookmarkIcons = document.querySelectorAll<HTMLDivElement>(".bookmark");
+let bookmarkBtns = document.querySelectorAll<HTMLButtonElement>(".btn--bookmark");
 
-if (!bookmarkBtns || !bookmarkIcons) {
+if (!bookmarkBtns) {
 	throw new Error("Some elements could not be found.");
 }
 
@@ -22,6 +22,11 @@ const handleBookmarkBtnOnClick = (event: Event) => {
 bookmarkBtns.forEach((button) => button.addEventListener("click", handleBookmarkBtnOnClick));
 
 //METHODS//
+
+export const recaptureBtns = () => {
+	bookmarkBtns = document.querySelectorAll<HTMLButtonElement>(".btn--bookmark");
+	bookmarkBtns.forEach((button) => button.addEventListener("click", handleBookmarkBtnOnClick));
+};
 
 const createBookmarkIconElement = (): HTMLDivElement => {
 	const bookmarkIcon = document.createElement("div");
@@ -42,32 +47,39 @@ const addBookmark = (btn: HTMLButtonElement) => {
 		//POST BOOKMARK TO DATABASE//
 		const wordId = btn.parentElement?.getAttribute("data-word-id");
 		postBookmark(Number(wordId), userId);
-		getUserBookmarks();
 		//ADD BOOKMARK ICON//
-		const bookmarkIcon = createBookmarkIconElement;
-		btn.after(bookmarkIcon());
+		const bookmarkIcon = createBookmarkIconElement();
+		btn.after(bookmarkIcon);
 	}
 };
 
 const removeBookmark = (btn: HTMLButtonElement) => {
+	console.log("removing");
 	//SWAP BUTTON//
 	btn.innerHTML = `<i class="material-icons btn--bookmark-icon">add_box</i>`;
 	btn.setAttribute("data-bookmark-type", "add");
 	//DELETE BOOKMARK FROM DATABASE//
 	const wordId = btn.parentElement?.getAttribute("data-word-id");
-	deleteBookmark(Number(wordId), getUserId());
-	getUserBookmarks();
+	deleteUserBookmark(Number(wordId), getUserId());
 	//REMOVE BOOKMARK ICON//
-	const bookmarkIcon = btn.nextSibling;
-	if (bookmarkIcon) {
-		bookmarkIcon.remove();
+	const bookmarkIcon = btn.nextElementSibling;
+	bookmarkIcon?.remove();
+};
+
+const checkIfSuccessful = (response: boolean) => {
+	if (response === false) {
+		alert("Something went wrong. Please try again.");
 	}
 };
 
 const postBookmark = async (wordId: number, userId: number) => {
-	console.log(wordId, userId);
+	const response = await postNewBookmark(userId, wordId);
+	checkIfSuccessful(response);
+	getUserBookmarks();
 };
 
-const deleteBookmark = async (wordId: number, userId: number) => {
-	console.log(wordId, userId);
+const deleteUserBookmark = async (wordId: number, userId: number) => {
+	const response = await deleteBookmark(userId, wordId);
+	checkIfSuccessful(response);
+	getUserBookmarks();
 };

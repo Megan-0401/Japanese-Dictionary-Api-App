@@ -16,6 +16,7 @@ import {
 	createCategoryFilterHtmlString,
 } from "./utilities/htmlFormatter";
 import { clearInputFields } from "./utilities/accountUtilities";
+import { recaptureBtns } from "./utilities/bookmarkUtilities";
 
 //CAPTURING DOM ELEMENTS//
 
@@ -199,12 +200,14 @@ const getCategoryFilterOptions = async () => {
 //GETTING USER BOOKMARKS//
 export const getUserBookmarks = async () => {
 	bookmarkedWordsList = await getBookmarkedWords(getUserId());
+	console.log(bookmarkedWordsList);
 };
 
 //INSERTING HTML//
 export const displayResult = (wordList: Word[]) => {
 	const htmlString = createHTMLString(sortBookmarkedWords(wordList));
 	resultContainer.innerHTML = htmlString;
+	recaptureBtns();
 };
 
 const displayWordClassFilters = (htmlString: string) => {
@@ -221,6 +224,7 @@ export const displayUser = (user: User) => {
 	userInfo.setAttribute("data-user", user.id.toString());
 	accountBtn.innerText = "SIGN OUT";
 	getUserBookmarks();
+	console.log(bookmarkedWordsList);
 };
 
 //GETTING USER ID//

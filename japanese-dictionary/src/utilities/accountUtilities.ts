@@ -1,5 +1,5 @@
 import "../style.scss";
-import { postNewAccount } from "./postAPI";
+import { postNewAccount } from "./post&deleteAPI";
 import { getLoginResponseCode } from "./fetchAPI";
 
 //CAPTURING DOM ELEMENTS//
