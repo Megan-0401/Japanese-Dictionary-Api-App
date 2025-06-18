@@ -30,7 +30,8 @@ const getKanjiResultContainerHTML = (word: Word): string => {
 						<div class="stacked-container">
 							<p class="sentence sentence--jp">${createSpanHtmlForJpSentence(
 								word.kanji,
-								word.sentence.jp_sentence
+								word.sentence.jp_sentence,
+								word.wordClass
 							)}</p>
 							<p class="sentence sentence--eng"><i>${createSpanHtmlForEngSentence(
 								word.meanings,
@@ -61,7 +62,8 @@ const getNonKanjiResultContainerHTML = (word: Word): string => {
 						<div class="stacked-container">
 							<p class="sentence sentence--jp">${createSpanHtmlForJpSentence(
 								mainWord,
-								word.sentence.jp_sentence
+								word.sentence.jp_sentence,
+								word.wordClass
 							)}</p>
 							<p class="sentence sentence--eng"><i>${createSpanHtmlForEngSentence(
 								word.meanings,
@@ -84,24 +86,32 @@ const getCategoryOptionHTML = (category: Categories) => {
 	return `<option value="${category.id}">${category.category}</option>`;
 };
 
-const createSpanHtmlForJpSentence = (word: string, sentence: string): string => {
+const createSpanHtmlForJpSentence = (word: string, sentence: string, wordClass: string): string => {
+	if (wordClass === "verb") {
+		word = word[0];
+	}
 	const spanHtml = `<span class="dark-teal-col">${word}</span>`;
 	return sentence.replace(word, spanHtml);
 };
 
 const createSpanHtmlForEngSentence = (meanings: string, sentence: string): string => {
-	//FOR MULTIPLE MEANINGS, FIND THE MEANING PRESENT IN THE SENTENCE
-	const sentenceLowerCase = sentence.toLowerCase();
+	//FOR MULTIPLE MEANINGS, FIND THE MEANING PRESENT IN THE SENTENCE//
 	const meaningsList = meanings.split(",");
 	let wordInSentence = "";
 	for (let i = 0; i < meaningsList.length; i++) {
-		if (sentenceLowerCase.includes(meaningsList[i])) {
-			wordInSentence = meaningsList[i];
+		//Checking if the word is capitalised at the start//
+		let currentWord = meaningsList[i];
+		let capitalisedWord = currentWord.replace(currentWord[0], currentWord[0].toUpperCase());
+		if (sentence.includes(currentWord)) {
+			wordInSentence = currentWord;
+			break;
+		} else if (sentence.includes(capitalisedWord)) {
+			wordInSentence = capitalisedWord;
 			break;
 		}
 	}
 	const spanHtml = `<span class="light-orange-col">${wordInSentence}</span>`;
-	return sentenceLowerCase.replace(wordInSentence, spanHtml);
+	return sentence.replace(wordInSentence, spanHtml);
 };
 
 export const createHTMLString = (words: BookmarkedWord[]): string => {
