@@ -164,6 +164,12 @@ const sortBookmarkedWords = (wordList: Word[]): BookmarkedWord[] => {
 	return bookmarkList;
 };
 
+//COUTING RESULTS//
+const displayResultCount = () => {
+	const resultCount = resultContainer.childElementCount;
+	resultInfo.innerText = `results: ${resultCount}`;
+};
+
 //DISPLAYING WORDS ONTO PAGE//
 const displayAllWords = async () => {
 	const wordList = await getAllWords();
@@ -219,6 +225,7 @@ export const displayResult = (wordList: Word[]) => {
 	const htmlString = createHTMLString(sortBookmarkedWords(wordList));
 	resultContainer.innerHTML = htmlString;
 	recaptureBtns();
+	displayResultCount();
 };
 
 const displayWordClassFilters = (htmlString: string) => {
